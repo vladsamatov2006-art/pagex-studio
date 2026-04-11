@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /*.json$
+
+Sitemap: https://pagex.studio/sitemap.xml
+
+# Задержка для ботов (200мс)
+Crawl-delay: 0.2

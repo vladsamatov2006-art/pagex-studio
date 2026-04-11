@@ -1,0 +1,3668 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PageX — Профессиональные сайты на заказ | Веб-студия</title>
+<meta name="description" content="PageX — веб-студия создания современных сайтов. Лендинги, корпоративные сайты, интернет-магазины и веб-приложения. Быстро, качественно, по вашему ТЗ."/>
+<meta name="keywords" content="сайт на заказ,веб-студия,создание сайта,веб-разработка,лендинг,интернет-магазин,веб-приложение"/>
+<meta name="author" content="PageX Web Studio"/>
+<meta name="robots" content="index, follow"/>
+<meta name="language" content="Russian"/>
+<meta name="revisit-after" content="7"/>
+
+<!-- Open Graph для соцсетей -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="PageX — Профессиональные сайты на заказ" />
+<meta property="og:description" content="Создаём современные и красивые сайты. Лендинги, магазины, веб-приложения и корпоративные сайты." />
+<meta property="og:url" content="https://pagex.studio/" />
+<meta property="og:site_name" content="PageX" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PageX — Профессиональные сайты на заказ" />
+<meta name="twitter:description" content="Создаём современные и красивые сайты на вашем ТЗ" />
+
+<!-- Canonical URL -->
+<meta rel="canonical" href="https://pagex.studio/" />
+
+<!-- Favicon и для закладок -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%23D32F2F' width='32' height='32' rx='8'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='18' font-weight='bold' font-family='Arial'>P</text></svg>"/>
+<meta name="theme-color" content="#050505"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050505;
+    --bg-2:#0a0a0a;
+    --bg-3:#0e0e0e;
+    --bg-4:#131313;
+    --red:#D32F2F;
+    --red-dim:#B71C1C;
+    --red-soft:rgba(211,47,47,0.12);
+    --white:#F0F0F0;
+    --muted:rgba(240,240,240,0.45);
+    --muted-2:rgba(240,240,240,0.65);
+    --line:rgba(240,240,240,0.08);
+    --line-strong:rgba(240,240,240,0.16);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--white);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    font-feature-settings:"ss01","cv11";
+  }
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  ul{list-style:none}
+  img,svg{display:block}
+
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+  .label{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .label .num{color:var(--red)}
+  .label::before{
+    content:'';
+    width:24px;
+    height:1px;
+    background:var(--red);
+  }
+
+  .shell{
+    max-width:1320px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+  .shell-narrow{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* ============ HEADER ============ */
+  .site-header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(5,5,5,0.6);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid var(--line);
+    transition:background 0.3s ease,border-color 0.3s ease;
+  }
+  .site-header.scrolled{
+    background:rgba(5,5,5,0.92);
+    border-bottom-color:var(--line-strong);
+  }
+  .header-grid{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    height:68px;
+    gap:32px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  .brand .mark{
+    width:24px;height:24px;
+    background:var(--red);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    font-weight:900;
+    color:#fff;
+    border-radius:2px;
+  }
+  .nav-center{display:flex;gap:40px}
+  .nav-center a{
+    font-size:13px;
+    font-weight:600;
+    color:var(--muted-2);
+    transition:color 0.2s;
+  }
+  .nav-center a:hover{color:var(--white)}
+  .header-right{display:flex;align-items:center;justify-content:flex-end;gap:20px}
+  .header-right .city{
+    font-size:11px;
+    font-weight:500;
+    color:var(--muted);
+    letter-spacing:0.1em;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .cta-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:13px;
+    font-weight:700;
+    padding:11px 18px;
+    background:var(--red);
+    color:#fff;
+    border:1px solid var(--red);
+    transition:background 0.2s,transform 0.15s;
+  }
+  .cta-link:hover{background:var(--red-dim)}
+  .cta-link:active{transform:scale(0.97)}
+  .cta-link svg{width:12px;height:12px}
+
+  /* ============ BUTTONS ============ */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 26px;
+    font-size:13px;
+    font-weight:700;
+    transition:background 0.2s,color 0.2s,border-color 0.2s,transform 0.15s;
+  }
+  .btn-primary{background:var(--red);color:#fff;border:1px solid var(--red)}
+  .btn-primary:hover{background:var(--red-dim);border-color:var(--red-dim)}
+  .btn-primary:active{transform:scale(0.97)}
+  .btn-ghost{
+    background:transparent;
+    color:var(--white);
+    border:1px solid var(--line-strong);
+  }
+  .btn-ghost:hover{border-color:var(--red);color:var(--red)}
+  .btn-ghost:active{transform:scale(0.97)}
+  .btn svg{width:14px;height:14px}
+
+  /* ============ PARALLAX EFFECT ============ */
+  .parallax-bg{
+    position:relative;
+    overflow:hidden;
+  }
+  .parallax-layer{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+    will-change:transform;
+  }
+  .parallax-content{
+    position:relative;
+    z-index:2;
+  }
+
+  /* ============ HERO (ai.work pattern: centered) ============ */
+  .hero{
+    position:relative;
+    padding:160px 0 80px;
+    text-align:center;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero.parallax-bg{
+    background:var(--bg);
+  }
+  .hero-glow.parallax-layer{
+    position:absolute;
+    top:-200px;left:50%;
+    width:900px;height:900px;
+    transform:translateX(-50%);
+    background:radial-gradient(circle,rgba(211,47,47,0.07) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:2}
+  .hero .intro{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border:1px solid rgba(211,47,47,0.3);
+    background:linear-gradient(135deg, rgba(211,47,47,0.08) 0%, rgba(240,240,240,0.02) 100%);
+    backdrop-filter:blur(10px);
+    font-size:12px;
+    font-weight:600;
+    color:var(--white);
+    margin-bottom:36px;
+    border-radius:8px;
+    animation:heroIntroWow 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+  @keyframes heroIntroWow{
+    0%{opacity:0;transform:translateY(-20px) scale(0.95)}
+    50%{opacity:1;transform:translateY(0) scale(1)}
+    100%{opacity:0;transform:translateY(20px) scale(0.95)}
+  }
+  .hero .intro .pill-dot{
+    width:6px;height:6px;
+    background:var(--red);
+    border-radius:50%;
+    box-shadow:0 0 0 4px rgba(211,47,47,0.2);
+  }
+  .hero .intro span{color:var(--muted-2)}
+  .hero h1{
+    font-size:clamp(48px,7.5vw,108px);
+    font-weight:900;
+    letter-spacing:-0.04em;
+    line-height:0.94;
+    max-width:1100px;
+    margin:0 auto 32px;
+  }
+  .hero h1 .red{color:var(--red)}
+  .hero h1 .stroke{
+    -webkit-text-stroke:1.5px var(--white);
+    color:transparent;
+  }
+  .hero p.sub{
+    font-size:19px;
+    color:var(--muted-2);
+    max-width:640px;
+    margin:0 auto 44px;
+    line-height:1.55;
+  }
+  .hero .actions{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:80px;
+  }
+
+  /* hero workflow illustration */
+  .hero-flow{
+    max-width:1080px;
+    margin:0 auto;
+    border:1px solid var(--line-strong);
+    background:var(--bg-2);
+    padding:32px;
+    text-align:left;
+    position:relative;
+  }
+  .hero-flow::before{
+    content:'';
+    position:absolute;
+    inset:-1px;
+    border:1px solid transparent;
+    background:linear-gradient(180deg,rgba(211,47,47,0.4),transparent 30%) border-box;
+    -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    pointer-events:none;
+  }
+  .hero-flow-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-bottom:20px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:24px;
+  }
+  .hero-flow-header .who{display:flex;align-items:center;gap:12px}
+  .hero-flow-header .ava{
+    width:36px;height:36px;
+    background:var(--red);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:13px;
+    border-radius:50%;
+  }
+  .hero-flow-header .who-name{
+    font-size:13px;
+    font-weight:700;
+  }
+  .hero-flow-header .who-name span{
+    display:block;
+    font-size:11px;
+    font-weight:500;
+    color:var(--muted);
+    margin-top:2px;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .hero-flow-header .status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:11px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+  .hero-flow-header .status .live{
+    width:7px;height:7px;
+    background:var(--red);
+    border-radius:50%;
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:0.5;transform:scale(0.85)}
+  }
+  .hero-flow-steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+  }
+  .hero-flow-step{
+    background:var(--bg);
+    border:1px solid var(--line);
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    position:relative;
+    transition:border-color 0.3s ease;
+  }
+  .hero-flow-step.done{border-color:rgba(211,47,47,0.4)}
+  .hero-flow-step .top-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .hero-flow-step .step-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:0.1em;
+  }
+  .hero-flow-step .check{
+    width:14px;height:14px;
+    border:1px solid var(--line-strong);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-flow-step.done .check{
+    background:var(--red);
+    border-color:var(--red);
+  }
+  .hero-flow-step.done .check::after{
+    content:'';
+    width:7px;height:3px;
+    border-left:1.5px solid #fff;
+    border-bottom:1.5px solid #fff;
+    transform:rotate(-45deg) translate(1px,-1px);
+  }
+  .hero-flow-step .name{
+    font-size:14px;
+    font-weight:700;
+    line-height:1.3;
+  }
+  .hero-flow-step .meta{
+    font-size:11px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .hero-flow-step .bar{
+    height:3px;
+    background:var(--line);
+    overflow:hidden;
+  }
+  .hero-flow-step .bar i{
+    display:block;
+    height:100%;
+    background:var(--red);
+    width:0;
+  }
+  .hero-flow-step.done .bar i{width:100%}
+  .hero-flow-step.active .bar i{width:60%;animation:fill 2s ease-in-out infinite}
+  @keyframes fill{
+    0%,100%{width:30%}
+    50%{width:80%}
+  }
+
+  /* ============ STACK / TECH GRID ============ */
+  .stack{
+    padding:120px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .stack-head{
+    text-align:center;
+    margin-bottom:64px;
+  }
+  .stack-head .label{margin-bottom:20px}
+  .stack-head h2{
+    font-size:clamp(32px,4.4vw,56px);
+    font-weight:900;
+    letter-spacing:-0.035em;
+    line-height:1;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .stack-head h2 .red{color:var(--red)}
+  .stack-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    border:1px solid var(--line-strong);
+    background:var(--bg-2);
+  }
+  .stack-cell{
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:24px 16px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    min-height:110px;
+    transition:background 0.25s ease;
+  }
+  .stack-cell:hover{background:var(--bg-3)}
+  .stack-cell:nth-child(6n){border-right:none}
+  .stack-cell:nth-last-child(-n+6){border-bottom:none}
+  .stack-icon{
+    width:24px;height:24px;
+    color:var(--white);
+  }
+  .stack-cell:hover .stack-icon{color:var(--red)}
+  .stack-cell .name{
+    font-size:11px;
+    font-weight:600;
+    color:var(--muted-2);
+    text-align:center;
+    letter-spacing:0.02em;
+  }
+
+  /* ============ SERVICES TABS (skills carousel pattern) ============ */
+  .services-section{
+    padding:120px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .services-head{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:end;
+    margin-bottom:60px;
+  }
+  .services-head .left .label{margin-bottom:18px}
+  .services-head .left h2{
+    font-size:clamp(36px,5vw,68px);
+    font-weight:900;
+    letter-spacing:-0.035em;
+    line-height:0.95;
+  }
+  .services-head .left h2 .red{color:var(--red)}
+  .services-head .left h2 .stroke{
+    -webkit-text-stroke:1.5px var(--white);
+    color:transparent;
+  }
+  .services-head .right{
+    font-size:15px;
+    color:var(--muted-2);
+    line-height:1.6;
+    max-width:420px;
+    justify-self:end;
+  }
+
+  .services-tabs{
+    display:flex;
+    gap:0;
+    border:1px solid var(--line-strong);
+    background:var(--bg-2);
+    margin-bottom:0;
+    overflow:hidden;
+  }
+  .services-tab{
+    flex:1;
+    padding:22px 24px;
+    border-right:1px solid var(--line);
+    text-align:left;
+    cursor:pointer;
+    background:transparent;
+    color:var(--muted-2);
+    transition:background 0.25s ease,color 0.25s ease;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .services-tab:last-child{border-right:none}
+  .services-tab .tab-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:0.1em;
+  }
+  .services-tab .tab-name{
+    font-size:14px;
+    font-weight:700;
+    color:inherit;
+  }
+  .services-tab:hover{background:var(--bg-3);color:var(--white)}
+  .services-tab.active{
+    background:var(--red);
+    color:#fff;
+  }
+  .services-tab.active .tab-num{color:rgba(255,255,255,0.7)}
+
+  .services-panel-wrap{
+    border:1px solid var(--line-strong);
+    border-top:none;
+    background:var(--bg-2);
+  }
+  .services-panel{
+    display:none;
+    grid-template-columns:1.1fr 1fr;
+    gap:0;
+    min-height:420px;
+  }
+  .services-panel.active{display:grid}
+  .services-panel .info{
+    padding:48px 48px 40px;
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .services-panel .info .label{margin-bottom:0}
+  .services-panel .info h3{
+    font-size:36px;
+    font-weight:900;
+    letter-spacing:-0.025em;
+    line-height:1.05;
+  }
+  .services-panel .info p{
+    font-size:15px;
+    color:var(--muted-2);
+    line-height:1.65;
+    max-width:440px;
+  }
+  .services-panel .info ul{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:8px;
+  }
+  .services-panel .info ul li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:13px;
+    color:var(--white);
+  }
+  .services-panel .info ul li::before{
+    content:'';
+    width:5px;height:5px;
+    background:var(--red);
+    flex-shrink:0;
+  }
+  .services-panel .info .price{
+    margin-top:auto;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .services-panel .info .price .from{
+    font-size:11px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+  .services-panel .info .price .num{
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:-0.02em;
+    line-height:1;
+  }
+  .services-panel .info .price .num .acc{color:var(--red)}
+  .services-panel .info .price .term{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:4px;
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  .services-panel .visual{
+    background:var(--bg-3);
+    padding:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .mockup{
+    width:100%;
+    max-width:420px;
+    border:1px solid var(--line-strong);
+    background:var(--bg);
+  }
+  .mockup .m-top{
+    height:28px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    padding:0 12px;
+    gap:8px;
+  }
+  .mockup .m-top i{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--line-strong);
+  }
+  .mockup .m-top i:first-child{background:var(--red)}
+  .mockup .m-body{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .mockup .m-body .ln{
+    height:8px;
+    background:var(--line);
+  }
+  .mockup .m-body .ln.w-90{width:90%}
+  .mockup .m-body .ln.w-70{width:70%}
+  .mockup .m-body .ln.w-50{width:50%}
+  .mockup .m-body .ln.thin{height:4px;width:60%}
+  .mockup .m-body .ln.red{background:var(--red);height:14px;width:80px;margin-top:6px}
+  .mockup .m-body .grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:14px;
+  }
+  .mockup .m-body .grid-3 div{
+    aspect-ratio:1;
+    background:var(--bg-3);
+    border:1px solid var(--line);
+  }
+
+  /* ============ METRICS ============ */
+  .metrics{
+    padding:120px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .metrics-head{
+    text-align:center;
+    margin-bottom:64px;
+  }
+  .metrics-head .label{margin-bottom:20px}
+  .metrics-head h2{
+    font-size:clamp(32px,4.4vw,56px);
+    font-weight:900;
+    letter-spacing:-0.035em;
+    line-height:1;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .metrics-head h2 .red{color:var(--red)}
+  .metrics-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:1px solid var(--line-strong);
+    background:var(--bg-2);
+  }
+  .metric-card{
+    padding:56px 40px;
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    transition:background 0.25s ease;
+  }
+  .metric-card:last-child{border-right:none}
+  .metric-card:hover{background:var(--bg-3)}
+  .metric-card .top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+  }
+  .metric-card .num{
+    font-size:clamp(56px,7vw,96px);
+    font-weight:900;
+    letter-spacing:-0.04em;
+    line-height:0.85;
+    color:var(--white);
+  }
+  .metric-card .num .acc{color:var(--red)}
+  .metric-card .corner{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    text-align:right;
+  }
+  .metric-card .name{
+    font-size:16px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    margin-top:auto;
+  }
+  .metric-card .desc{
+    font-size:13px;
+    color:var(--muted-2);
+    line-height:1.55;
+  }
+
+  /* ============ TESTIMONIAL ============ */
+  .testimonial{
+    padding:120px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .quote-card{
+    border:1px solid var(--line-strong);
+    background:var(--bg-2);
+    padding:64px;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .quote-card .left{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    min-width:180px;
+  }
+  .quote-card .avatars{
+    display:flex;
+  }
+  .quote-card .avatars .ava{
+    width:42px;height:42px;
+    border-radius:50%;
+    border:2px solid var(--bg-2);
+    background:var(--bg-3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    font-weight:800;
+    color:var(--white);
+    margin-left:-10px;
+  }
+  .quote-card .avatars .ava:first-child{margin-left:0}
+  .quote-card .avatars .ava.red{background:var(--red);color:#fff}
+  .quote-card .left .who-block{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .quote-card .left .who-block .name{
+    font-size:14px;
+    font-weight:700;
+  }
+  .quote-card .left .who-block .role{
+    font-size:11px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+  .quote-card .right{
+    position:relative;
+  }
+  .quote-card .right .qm{
+    font-size:80px;
+    font-weight:900;
+    color:var(--red);
+    line-height:0.5;
+    margin-bottom:14px;
+    font-family:Georgia,serif;
+  }
+  .quote-card .right blockquote{
+    font-size:clamp(22px,2.4vw,32px);
+    font-weight:600;
+    line-height:1.35;
+    letter-spacing:-0.015em;
+    max-width:760px;
+  }
+
+  /* ============ ROTATE SECTION (KEPT) ============ */
+  .rotate-section{
+    position:relative;
+    height:340vh;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .rotate-sticky{
+    position:sticky;
+    top:0;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+  }
+  .rotate-glow{
+    position:absolute;
+    left:50%;top:50%;
+    width:760px;height:760px;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle,rgba(211,47,47,0.06) 0%,transparent 65%);
+    pointer-events:none;
+    will-change:transform;
+  }
+  .rotate-grid{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:38% 62%;
+    align-items:center;
+    gap:40px;
+    width:100%;
+  }
+  .rotate-left .label{margin-bottom:32px}
+  .rotate-left h2{
+    font-size:clamp(36px,4.6vw,68px);
+    font-weight:900;
+    letter-spacing:-0.035em;
+    line-height:0.92;
+    margin-bottom:48px;
+  }
+  .rotate-left h2 .red{color:var(--red)}
+  .rotate-left h2 .stroke{
+    -webkit-text-stroke:1.5px var(--white);
+    color:transparent;
+  }
+  .rotate-steps{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid var(--line);
+  }
+  .rotate-steps li{
+    display:grid;
+    grid-template-columns:48px 1fr auto;
+    align-items:center;
+    gap:18px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+    transition:padding 0.4s ease;
+  }
+  .rotate-steps li .idx{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--muted);
+    transition:color 0.4s ease;
+  }
+  .rotate-steps li .name{
+    font-size:18px;
+    font-weight:700;
+    color:rgba(240,240,240,0.35);
+    text-transform:uppercase;
+    transition:color 0.4s ease,transform 0.4s ease;
+  }
+  .rotate-steps li .pct{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:0.1em;
+  }
+  .rotate-steps li.active .idx{color:var(--red)}
+  .rotate-steps li.active .name{color:var(--white);transform:translateX(6px)}
+  .rotate-steps li.active{border-bottom-color:var(--red)}
+  .stage{
+    perspective:1400px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+  }
+  .browser{
+    position:relative;
+    width:100%;
+    max-width:680px;
+    aspect-ratio:16/10;
+    transform-style:preserve-3d;
+    will-change:transform;
+  }
+  .face{
+    position:absolute;
+    inset:0;
+    border-radius:4px;
+    overflow:hidden;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    border:1px solid var(--line-strong);
+  }
+  .face-front{background:#080808;display:flex;flex-direction:column}
+  .face-back{
+    background:var(--red);
+    transform:rotateY(180deg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    padding:60px 40px;
+    text-align:center;
+    gap:20px;
+  }
+  .face-back .small-cap{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.7);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .face-back h3{
+    font-size:clamp(32px,4.5vw,60px);
+    font-weight:900;
+    color:#fff;
+    letter-spacing:-0.035em;
+    line-height:0.92;
+    text-transform:uppercase;
+  }
+  .face-back .meta{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:11px;
+    color:rgba(255,255,255,0.85);
+    font-family:'JetBrains Mono',monospace;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+  .face-back .meta .dot{
+    width:6px;height:6px;
+    background:#fff;
+    border-radius:50%;
+  }
+  .chrome{
+    height:36px;
+    background:#0d0d0d;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    padding:0 14px;
+    gap:12px;
+    flex-shrink:0;
+  }
+  .dots{display:flex;gap:6px}
+  .dots i{width:10px;height:10px;border-radius:50%;display:block}
+  .dots i:nth-child(1){background:#ff5f56}
+  .dots i:nth-child(2){background:#ffbd2e}
+  .dots i:nth-child(3){background:#27c93f}
+  .urlbar{
+    flex:1;
+    height:22px;
+    background:#060606;
+    border:1px solid var(--line);
+    border-radius:3px;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+    font-size:10px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .urlbar .lock{
+    width:6px;height:6px;
+    background:var(--red);
+    border-radius:50%;
+    margin-right:8px;
+  }
+  .fake-site{
+    flex:1;
+    padding:22px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    background:#080808;
+  }
+  .fs-nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .fs-logo{
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:0.1em;
+  }
+  .fs-logo span{color:var(--red)}
+  .fs-nav-links{display:flex;gap:14px}
+  .fs-nav-links span{
+    width:32px;height:5px;
+    background:rgba(240,240,240,0.12);
+  }
+  .fs-hero{padding:18px 0 12px;display:flex;flex-direction:column;gap:9px}
+  .fs-hero .line{height:11px;background:rgba(240,240,240,0.18)}
+  .fs-hero .line.w-90{width:90%}
+  .fs-hero .line.w-70{width:70%}
+  .fs-hero .line.w-50{width:50%}
+  .fs-hero .line.thin{height:5px;background:rgba(240,240,240,0.08);width:60%;margin-top:4px}
+  .fs-hero .fs-btn{margin-top:10px;width:96px;height:18px;background:var(--red)}
+  .fs-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:auto}
+  .fs-card{
+    aspect-ratio:5/4;
+    background:#0c0c0c;
+    border:1px solid var(--line);
+    padding:9px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .fs-card .chip-row{display:flex;align-items:center;justify-content:space-between}
+  .fs-card .chip{width:14px;height:14px;background:var(--red)}
+  .fs-card .num{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted)}
+  .fs-card .bars{margin-top:auto;display:flex;flex-direction:column;gap:4px}
+  .fs-card .bar{height:3px;background:rgba(240,240,240,0.18)}
+  .fs-card .bar.sm{width:60%}
+
+  /* ============ HOW IT WORKS (alternating rows) ============ */
+  .how{
+    padding:120px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .how-head{
+    text-align:center;
+    margin-bottom:80px;
+  }
+  .how-head .label{margin-bottom:20px}
+  .how-head h2{
+    font-size:clamp(36px,5vw,68px);
+    font-weight:900;
+    letter-spacing:-0.035em;
+    line-height:0.95;
+    max-width:780px;
+    margin:0 auto;
+  }
+  .how-head h2 .red{color:var(--red)}
+  .how-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+    padding:80px 0;
+    border-top:1px solid var(--line);
+  }
+  .how-row:last-child{border-bottom:1px solid var(--line)}
+  .how-row.reverse .text-col{order:2}
+  .how-row.reverse .visual-col{order:1}
+  .how-row .text-col{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .how-row .text-col .step-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--red);
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+  }
+  .how-row .text-col h3{
+    font-size:clamp(32px,3.6vw,48px);
+    font-weight:900;
+    letter-spacing:-0.025em;
+    line-height:1;
+  }
+  .how-row .text-col p{
+    font-size:16px;
+    color:var(--muted-2);
+    line-height:1.65;
+    max-width:480px;
+  }
+  .how-row .text-col .features{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-top:14px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+  .how-row .text-col .features li{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    font-size:14px;
+  }
+  .how-row .text-col .features li .ic{
+    width:18px;height:18px;
+    border:1px solid var(--red);
+    background:rgba(211,47,47,0.1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    margin-top:1px;
+  }
+  .how-row .text-col .features li .ic::after{
+    content:'';
+    width:6px;height:3px;
+    border-left:1.5px solid var(--red);
+    border-bottom:1.5px solid var(--red);
+    transform:rotate(-45deg) translate(0.5px,-0.5px);
+  }
+
+  .how-row .visual-col{
+    background:var(--bg-2);
+    border:1px solid var(--line-strong);
+    padding:40px;
+    aspect-ratio:5/4;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  /* Visual: brief form */
+  .visual-brief{
+    width:100%;
+    max-width:380px;
+    background:var(--bg);
+    border:1px solid var(--line-strong);
+    padding:24px;
+  }
+  .visual-brief .vb-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:18px;
+  }
+  .visual-brief .vb-head .t{
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .visual-brief .vb-head .badge{
+    font-size:10px;
+    padding:4px 8px;
+    background:var(--red);
+    color:#fff;
+    font-family:'JetBrains Mono',monospace;
+    letter-spacing:0.05em;
+  }
+  .visual-brief .field{
+    margin-bottom:14px;
+  }
+  .visual-brief .field .lbl{
+    font-size:10px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    font-family:'JetBrains Mono',monospace;
+    margin-bottom:6px;
+  }
+  .visual-brief .field .ln{
+    height:8px;
+    background:var(--line);
+  }
+  .visual-brief .field .ln.short{width:60%}
+  .visual-brief .field .stack{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  .visual-brief .typing{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    margin-top:6px;
+  }
+  .visual-brief .typing i{
+    width:5px;height:5px;
+    background:var(--red);
+    border-radius:50%;
+    animation:blink 1.4s infinite;
+  }
+  .visual-brief .typing i:nth-child(2){animation-delay:0.2s}
+  .visual-brief .typing i:nth-child(3){animation-delay:0.4s}
+  @keyframes blink{
+    0%,80%,100%{opacity:0.3}
+    40%{opacity:1}
+  }
+
+  /* Visual: estimate */
+  .visual-est{
+    width:100%;
+    max-width:380px;
+    background:var(--bg);
+    border:1px solid var(--line-strong);
+    padding:24px;
+  }
+  .visual-est .vh{
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-family:'JetBrains Mono',monospace;
+    margin-bottom:18px;
+    color:var(--muted-2);
+  }
+  .visual-est .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+    font-size:13px;
+  }
+  .visual-est .row:last-of-type{border-bottom:none}
+  .visual-est .row .k{color:var(--muted-2)}
+  .visual-est .row .v{
+    font-weight:700;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .visual-est .total{
+    margin-top:14px;
+    padding-top:18px;
+    border-top:1px solid var(--line-strong);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .visual-est .total .t{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .visual-est .total .price{
+    font-size:24px;
+    font-weight:900;
+    color:var(--red);
+    letter-spacing:-0.02em;
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  /* Visual: code */
+  .visual-code{
+    width:100%;
+    max-width:420px;
+    background:var(--bg);
+    border:1px solid var(--line-strong);
+    overflow:hidden;
+  }
+  .visual-code .ch{
+    height:30px;
+    background:#0a0a0a;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    padding:0 14px;
+    gap:8px;
+  }
+  .visual-code .ch i{
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--line-strong);
+  }
+  .visual-code .ch i:first-child{background:var(--red)}
+  .visual-code .ch .file{
+    margin-left:8px;
+    font-size:10px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .visual-code pre{
+    padding:20px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    line-height:1.7;
+    color:var(--muted-2);
+    overflow:auto;
+  }
+  .visual-code pre .k{color:var(--red)}
+  .visual-code pre .s{color:var(--white)}
+  .visual-code pre .c{color:var(--muted)}
+
+  /* Visual: deploy */
+  .visual-deploy{
+    width:100%;
+    max-width:380px;
+    background:var(--bg);
+    border:1px solid var(--line-strong);
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .visual-deploy .vh{
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-family:'JetBrains Mono',monospace;
+    color:var(--muted);
+  }
+  .visual-deploy .url-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px;
+    background:var(--bg-2);
+    border:1px solid var(--line);
+  }
+  .visual-deploy .url-row .dot{
+    width:8px;height:8px;
+    background:var(--red);
+    border-radius:50%;
+    flex-shrink:0;
+    box-shadow:0 0 0 4px rgba(211,47,47,0.2);
+  }
+  .visual-deploy .url-row .u{
+    font-size:12px;
+    font-family:'JetBrains Mono',monospace;
+    color:var(--white);
+    flex:1;
+  }
+  .visual-deploy .checks{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .visual-deploy .checks .c-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:12px;
+  }
+  .visual-deploy .checks .c-row .l{color:var(--muted-2)}
+  .visual-deploy .checks .c-row .ok{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:var(--red);
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+  .visual-deploy .checks .c-row .ok::before{
+    content:'';
+    width:6px;height:6px;
+    background:var(--red);
+    border-radius:50%;
+  }
+
+  /* ============ CHAT DEMO ============ */
+  .chat-section{
+    padding:120px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .chat-head{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:60px;
+    margin-bottom:60px;
+    align-items:end;
+  }
+  .chat-head .left .label{margin-bottom:18px}
+  .chat-head .left h2{
+    font-size:clamp(36px,5vw,68px);
+    font-weight:900;
+    letter-spacing:-0.035em;
+    line-height:0.95;
+  }
+  .chat-head .left h2 .red{color:var(--red)}
+  .chat-head .left h2 .stroke{
+    -webkit-text-stroke:1.5px var(--white);
+    color:transparent;
+  }
+  .chat-head .right{
+    font-size:15px;
+    color:var(--muted-2);
+    line-height:1.65;
+    max-width:520px;
+  }
+  .chat-window{
+    border:1px solid var(--line-strong);
+    background:var(--bg-2);
+    overflow:hidden;
+  }
+  .chat-bar{
+    height:50px;
+    background:var(--bg-3);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    padding:0 24px;
+    gap:14px;
+  }
+  .chat-bar .who{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .chat-bar .ava{
+    width:28px;height:28px;
+    background:var(--red);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:800;
+    border-radius:50%;
+  }
+  .chat-bar .name{
+    font-size:13px;
+    font-weight:700;
+  }
+  .chat-bar .name span{
+    display:block;
+    font-size:10px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    margin-top:1px;
+  }
+  .chat-bar .live{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:10px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+  .chat-bar .live i{
+    width:7px;height:7px;
+    background:var(--red);
+    border-radius:50%;
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+  .chat-body{
+    padding:32px 40px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    min-height:420px;
+  }
+  .msg{
+    display:flex;
+    gap:14px;
+    max-width:78%;
+  }
+  .msg.them{align-self:flex-start}
+  .msg.us{align-self:flex-end;flex-direction:row-reverse}
+  .msg .ava{
+    width:32px;height:32px;
+    border-radius:50%;
+    flex-shrink:0;
+    background:var(--bg-3);
+    border:1px solid var(--line-strong);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:800;
+  }
+  .msg.us .ava{background:var(--red);color:#fff;border-color:var(--red)}
+  .msg .bubble{
+    background:var(--bg);
+    border:1px solid var(--line);
+    padding:14px 18px;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--white);
+  }
+  .msg.us .bubble{
+    background:var(--red);
+    border-color:var(--red);
+    color:#fff;
+  }
+  .msg .bubble .meta{
+    display:block;
+    font-size:10px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    margin-top:6px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .msg.us .bubble .meta{color:rgba(255,255,255,0.7)}
+  .msg .bubble .link{
+    display:inline-block;
+    margin-top:8px;
+    padding:6px 12px;
+    border:1px solid rgba(255,255,255,0.3);
+    font-size:11px;
+    font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+
+  /* ============ FEATURES GRID ============ */
+  .features{
+    padding:120px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .features-head{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:end;
+    margin-bottom:60px;
+  }
+  .features-head .left .label{margin-bottom:18px}
+  .features-head .left h2{
+    font-size:clamp(36px,5vw,68px);
+    font-weight:900;
+    letter-spacing:-0.035em;
+    line-height:0.95;
+  }
+  .features-head .left h2 .red{color:var(--red)}
+  .features-head .right{
+    font-size:15px;
+    color:var(--muted-2);
+    line-height:1.65;
+    max-width:440px;
+    justify-self:end;
+  }
+  .features-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:1px solid var(--line-strong);
+    background:var(--bg-2);
+  }
+  .feature-card{
+    padding:40px 32px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    min-height:240px;
+    transition:background 0.25s ease;
+    position:relative;
+  }
+  .feature-card:hover{background:var(--bg-3)}
+  .feature-card:nth-child(3n){border-right:none}
+  .feature-card:nth-last-child(-n+3){border-bottom:none}
+  .feature-card .ico{
+    width:36px;height:36px;
+    background:rgba(211,47,47,0.12);
+    border:1px solid rgba(211,47,47,0.35);
+    color:var(--red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .feature-card .ico svg{width:18px;height:18px}
+  .feature-card .num{
+    position:absolute;
+    top:32px;right:32px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:0.1em;
+  }
+  .feature-card h3{
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    margin-top:8px;
+  }
+  .feature-card p{
+    font-size:14px;
+    color:var(--muted-2);
+    line-height:1.6;
+  }
+
+  /* ============ QUALITY/GOVERNANCE ============ */
+  .quality{
+    padding:120px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .quality-card{
+    border:1px solid var(--line-strong);
+    background:var(--bg-2);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    overflow:hidden;
+  }
+  .quality-card .left{
+    padding:64px;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    border-right:1px solid var(--line);
+  }
+  .quality-card .left .label{margin-bottom:0}
+  .quality-card .left h2{
+    font-size:clamp(32px,3.6vw,52px);
+    font-weight:900;
+    letter-spacing:-0.025em;
+    line-height:1;
+  }
+  .quality-card .left h2 .red{color:var(--red)}
+  .quality-card .left p{
+    font-size:15px;
+    color:var(--muted-2);
+    line-height:1.65;
+    max-width:420px;
+  }
+  .quality-card .right{
+    padding:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--bg-3);
+  }
+  .audit-card{
+    width:100%;
+    max-width:380px;
+    background:var(--bg);
+    border:1px solid var(--line-strong);
+    padding:28px;
+  }
+  .audit-card .ah{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:20px;
+  }
+  .audit-card .ah .t{
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .audit-card .ah .score{
+    font-size:24px;
+    font-weight:900;
+    color:var(--red);
+    font-family:'JetBrains Mono',monospace;
+    letter-spacing:-0.02em;
+  }
+  .audit-card .ah .score span{font-size:12px;color:var(--muted)}
+  .audit-card ul{display:flex;flex-direction:column;gap:14px}
+  .audit-card ul li{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:13px;
+    color:var(--white);
+  }
+  .audit-card ul li .check{
+    width:18px;height:18px;
+    background:var(--red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .audit-card ul li .check::after{
+    content:'';
+    width:7px;height:3px;
+    border-left:1.5px solid #fff;
+    border-bottom:1.5px solid #fff;
+    transform:rotate(-45deg) translate(1px,-1px);
+  }
+  .audit-card .approve{
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    display:flex;
+    gap:8px;
+  }
+  .audit-card .approve button{
+    flex:1;
+    padding:11px;
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    border:1px solid var(--line-strong);
+    background:transparent;
+    color:var(--white);
+  }
+  .audit-card .approve .pri{
+    background:var(--red);
+    border-color:var(--red);
+  }
+
+  /* ============ CTA ============ */
+  .cta{
+    padding:140px 0;
+    background:var(--bg);
+    text-align:center;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-glow{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:900px;height:600px;
+    background:radial-gradient(ellipse,rgba(211,47,47,0.08) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .cta-inner{position:relative;z-index:2}
+  .cta .label{margin-bottom:24px}
+  .cta h2{
+    font-size:clamp(40px,6.5vw,96px);
+    font-weight:900;
+    letter-spacing:-0.04em;
+    line-height:0.92;
+    margin-bottom:24px;
+    max-width:900px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .cta h2 .red{color:var(--red)}
+  .cta h2 .stroke{
+    -webkit-text-stroke:1.5px var(--white);
+    color:transparent;
+  }
+  .cta p{
+    font-size:18px;
+    color:var(--muted-2);
+    max-width:560px;
+    margin:0 auto 40px;
+    line-height:1.55;
+  }
+  .cta .actions{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  /* ============ BLOG ============ */
+  .blog{
+    padding:120px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .blog-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:48px;
+    gap:40px;
+  }
+  .blog-head .label{margin-bottom:18px;display:block}
+  .blog-head h2{
+    font-size:clamp(32px,4vw,52px);
+    font-weight:900;
+    letter-spacing:-0.025em;
+    line-height:1;
+  }
+  .blog-head h2 .red{color:var(--red)}
+  .blog-head .all{
+    font-size:12px;
+    font-weight:600;
+    color:var(--muted-2);
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-family:'JetBrains Mono',monospace;
+    border-bottom:1px solid var(--red);
+    padding-bottom:4px;
+  }
+  .blog-head .all:hover{color:var(--red)}
+  .blog-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .blog-card{
+    border:1px solid var(--line-strong);
+    background:var(--bg-2);
+    padding:36px;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    transition:background 0.25s ease,border-color 0.25s ease;
+    cursor:pointer;
+  }
+  .blog-card:hover{background:var(--bg-3);border-color:rgba(211,47,47,0.3)}
+  .blog-card .meta{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:11px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+  .blog-card .meta .tag{
+    padding:4px 8px;
+    border:1px solid var(--line);
+    color:var(--white);
+  }
+  .blog-card h3{
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:-0.015em;
+    line-height:1.2;
+  }
+  .blog-card p{
+    font-size:14px;
+    color:var(--muted-2);
+    line-height:1.6;
+    margin-top:auto;
+  }
+  .blog-card .read{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    font-weight:700;
+    color:var(--red);
+    font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+  .blog-card .read::after{content:'→'}
+
+  /* ============ SMOOTH TEXT REVEAL ============ */
+  .reveal-text{
+    overflow:hidden;
+  }
+  .reveal-text span{
+    display:inline-block;
+    opacity:0;
+    animation:textReveal 0.6s ease-out forwards;
+  }
+  @keyframes textReveal{
+    0%{opacity:0;transform:translateY(10px)}
+    100%{opacity:1;transform:translateY(0)}
+  }
+
+  /* ============ CONTACT FORM ============ */
+  .contact-section{
+    padding:80px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .contact-inner{
+    max-width:540px;
+    margin:0 auto;
+  }
+  .contact-form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .form-group label{
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--muted-2);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .form-group input,
+  .form-group textarea{
+    padding:14px 16px;
+    background:var(--bg-2);
+    border:1px solid var(--line-strong);
+    color:var(--white);
+    font-family:inherit;
+    font-size:14px;
+    border-radius:6px;
+    transition:border-color 0.3s, box-shadow 0.3s;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder{
+    color:var(--muted);
+  }
+  .form-group input:focus,
+  .form-group textarea:focus{
+    outline:none;
+    border-color:var(--red);
+    box-shadow:0 0 0 3px rgba(211,47,47,0.15);
+  }
+  .form-group textarea{
+    resize:vertical;
+    min-height:120px;
+  }
+  .form-actions{
+    display:flex;
+    gap:12px;
+    margin-top:12px;
+  }
+  .form-actions button{
+    flex:1;
+    padding:14px 20px;
+    background:var(--red);
+    color:#fff;
+    border:1px solid var(--red);
+    border-radius:6px;
+    font-weight:700;
+    cursor:pointer;
+    transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .form-actions button:hover{
+    background:var(--red-dim);
+    border-color:var(--red-dim);
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(211,47,47,0.3);
+  }
+  .form-actions button:active{
+    transform:translateY(0);
+  }
+  .form-status{
+    font-size:12px;
+    padding:12px;
+    border-radius:6px;
+    text-align:center;
+    display:none;
+    animation:statusPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .form-status.success{
+    background:rgba(80,200,120,0.15);
+    color:#50c878;
+    border:1px solid rgba(80,200,120,0.3);
+    display:block;
+  }
+  .form-status.error{
+    background:rgba(211,47,47,0.15);
+    color:var(--red);
+    border:1px solid rgba(211,47,47,0.3);
+    display:block;
+  }
+  @keyframes statusPop{
+    0%{opacity:0;transform:scale(0.9)}
+    100%{opacity:1;transform:scale(1)}
+  }
+
+  /* ============ DARK/LIGHT MODE TOGGLE ============ */
+  .theme-toggle{
+    width:50px;
+    height:28px;
+    background:var(--bg-3);
+    border:1px solid var(--line-strong);
+    border-radius:14px;
+    cursor:pointer;
+    transition:all 0.3s;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:2px;
+  }
+  .theme-toggle:hover{
+    border-color:var(--red);
+    background:var(--bg-2);
+  }
+  .theme-toggle-circle{
+    width:22px;
+    height:22px;
+    background:var(--red);
+    border-radius:50%;
+    position:absolute;
+    left:2px;
+    transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+  }
+  .theme-toggle.light .theme-toggle-circle{
+    left:26px;
+  }
+  .theme-toggle-icon{
+    color:#fff;
+    font-size:12px;
+  }
+
+  /* ============ DARK MODE ============ */
+  :root.light-mode{
+    --bg:#FFFFFF;
+    --bg-2:#F5F5F5;
+    --bg-3:#EBEBEB;
+    --bg-4:#E0E0E0;
+    --white:#1A1A1A;
+    --muted:rgba(26,26,26,0.55);
+    --muted-2:rgba(26,26,26,0.8);
+    --line:rgba(26,26,26,0.08);
+    --line-strong:rgba(26,26,26,0.16);
+  }
+
+  /* ============ FOOTER ============ */
+  .footer{
+    background:var(--bg);
+    border-top:1px solid var(--line);
+    padding:64px 0 32px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:48px;
+  }
+  .footer-col h5{
+    font-size:11px;
+    font-family:'JetBrains Mono',monospace;
+    color:var(--muted);
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .footer-col a,.footer-col p{
+    display:block;
+    font-size:14px;
+    color:var(--white);
+    line-height:1.85;
+    transition:color 0.2s;
+  }
+  .footer-col a:hover{color:var(--red)}
+  .footer-col .brand{margin-bottom:14px}
+  .footer-col .desc{
+    font-size:14px;
+    color:var(--muted-2);
+    max-width:340px;
+    line-height:1.6;
+  }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .footer-bottom .copy,
+  .footer-bottom .credit{
+    font-size:11px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+
+  /* ============ REVEAL ============ */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.7s ease,transform 0.7s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* ============ FLOATING DISCOUNT ============ */
+  .discount-badge{
+    position:fixed;
+    right:-280px;
+    bottom:120px;
+    width:260px;
+    background:linear-gradient(135deg, rgba(211,47,47,0.95) 0%, rgba(211,47,47,0.85) 100%);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:12px;
+    padding:20px;
+    z-index:99;
+    transition:right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow:0 20px 60px rgba(211,47,47,0.3);
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .discount-badge.show{right:24px}
+  .discount-badge .close{
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:24px;
+    height:24px;
+    background:none;
+    border:none;
+    color:rgba(255,255,255,0.9);
+    cursor:pointer;
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:color 0.2s;
+  }
+  .discount-badge .close:hover{color:#fff}
+  .discount-badge .tag{
+    font-size:10px;
+    font-family:'JetBrains Mono',monospace;
+    color:rgba(255,255,255,0.8);
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+  }
+  .discount-badge .title{
+    font-size:18px;
+    font-weight:900;
+    color:#fff;
+    line-height:1.1;
+  }
+  .discount-badge .desc{
+    font-size:12px;
+    color:rgba(255,255,255,0.85);
+    line-height:1.4;
+  }
+  .discount-badge .action{
+    display:flex;
+    gap:8px;
+  }
+  .discount-badge button{
+    flex:1;
+    padding:10px 12px;
+    font-size:11px;
+    font-weight:700;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    transition:all 0.2s;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-family:inherit;
+  }
+  .discount-badge .btn-claim{
+    background:#fff;
+    color:#D32F2F;
+  }
+  .discount-badge .btn-claim:hover{
+    transform:scale(1.05);
+    box-shadow:0 8px 20px rgba(255,255,255,0.3);
+  }
+  .discount-badge .btn-later{
+    background:rgba(255,255,255,0.15);
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.3);
+  }
+  .discount-badge .btn-later:hover{
+    background:rgba(255,255,255,0.25);
+  }
+
+  /* ============ FLOATING DISCOUNT ============ */
+  .discount-badge{
+    position:fixed;
+    right:-280px;
+    bottom:120px;
+    width:260px;
+    background:linear-gradient(135deg, rgba(211,47,47,0.95) 0%, rgba(211,47,47,0.85) 100%);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:12px;
+    padding:20px;
+    z-index:99;
+    transition:right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow:0 20px 60px rgba(211,47,47,0.3);
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .discount-badge.show{right:24px}
+  .discount-badge .close{
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:24px;
+    height:24px;
+    background:none;
+    border:none;
+    color:rgba(255,255,255,0.9);
+    cursor:pointer;
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:color 0.2s;
+  }
+  .discount-badge .close:hover{color:#fff}
+  .discount-badge .tag{
+    font-size:10px;
+    font-family:'JetBrains Mono',monospace;
+    color:rgba(255,255,255,0.8);
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+  }
+  .discount-badge .title{
+    font-size:18px;
+    font-weight:900;
+    color:#fff;
+    line-height:1.1;
+  }
+  .discount-badge .desc{
+    font-size:12px;
+    color:rgba(255,255,255,0.85);
+    line-height:1.4;
+  }
+  .discount-badge .action{
+    display:flex;
+    gap:8px;
+  }
+  .discount-badge button{
+    flex:1;
+    padding:10px 12px;
+    font-size:11px;
+    font-weight:700;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    transition:all 0.2s;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-family:inherit;
+  }
+  .discount-badge .btn-claim{
+    background:#fff;
+    color:#D32F2F;
+  }
+  .discount-badge .btn-claim:hover{
+    transform:scale(1.05);
+    box-shadow:0 8px 20px rgba(255,255,255,0.3);
+  }
+  .discount-badge .btn-later{
+    background:rgba(255,255,255,0.15);
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.3);
+  }
+  .discount-badge .btn-later:hover{
+    background:rgba(255,255,255,0.25);
+  }
+
+  /* ============ MODAL ============ */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(5,5,5,0.8);
+    backdrop-filter:blur(8px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.3s ease;
+  }
+  .modal-overlay.active{opacity:1;pointer-events:all}
+  .modal-content{
+    background:var(--bg-2);
+    border:1px solid var(--line-strong);
+    border-radius:12px;
+    padding:40px;
+    max-width:500px;
+    width:90%;
+    position:relative;
+    transform:scale(0.9) translateY(20px);
+    transition:transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .modal-overlay.active .modal-content{transform:scale(1) translateY(0)}
+  .modal-close{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:32px;
+    height:32px;
+    background:none;
+    border:none;
+    font-size:24px;
+    color:var(--muted-2);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:color 0.2s;
+  }
+  .modal-close:hover{color:var(--white)}
+  .modal-content h3{
+    font-size:28px;
+    font-weight:900;
+    margin-bottom:16px;
+    color:var(--white);
+  }
+  .modal-content .modal-tag{
+    display:inline-block;
+    background:rgba(211,47,47,0.15);
+    color:var(--red);
+    padding:6px 12px;
+    border-radius:4px;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:16px;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .modal-content p{
+    font-size:14px;
+    color:var(--muted-2);
+    line-height:1.6;
+    margin-bottom:20px;
+  }
+  .modal-content .features-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .modal-content .features-list li{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:13px;
+    color:var(--white);
+  }
+  .modal-content .features-list li::before{
+    content:'';
+    width:4px;
+    height:4px;
+    background:var(--red);
+    border-radius:50%;
+    flex-shrink:0;
+  }
+
+  /* ============ BLOG EXPAND ============ */
+  .blog-card{cursor:pointer;position:relative}
+  .blog-card::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:var(--red);
+    border-radius:0;
+    opacity:0;
+    transition:opacity 0.3s;
+    pointer-events:none;
+    z-index:-1;
+  }
+  .blog-card:hover::after{opacity:0.1}
+  .blog-expand{
+    position:fixed;
+    inset:0;
+    background:rgba(5,5,5,0.9);
+    backdrop-filter:blur(10px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+    opacity:0;
+    transition:opacity 0.4s ease;
+  }
+  .blog-expand.active{
+    display:flex;
+    opacity:1;
+  }
+  .blog-expand-content{
+    background:var(--bg-2);
+    border:1px solid var(--line-strong);
+    padding:60px;
+    max-width:760px;
+    width:90%;
+    max-height:80vh;
+    overflow-y:auto;
+    border-radius:12px;
+    position:relative;
+    transform:scale(0.95) translateY(30px);
+    transition:transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .blog-expand.active .blog-expand-content{transform:scale(1) translateY(0)}
+  .blog-expand-close{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:40px;
+    height:40px;
+    background:none;
+    border:none;
+    font-size:28px;
+    color:var(--muted-2);
+    cursor:pointer;
+    transition:color 0.2s;
+    z-index:10;
+  }
+  .blog-expand-close:hover{color:var(--white)}
+  .blog-expand-content h2{
+    font-size:clamp(32px, 5vw, 52px);
+    font-weight:900;
+    margin-bottom:20px;
+    line-height:1.1;
+  }
+  .blog-expand-content .meta{
+    display:flex;
+    gap:16px;
+    align-items:center;
+    margin-bottom:32px;
+    padding-bottom:32px;
+    border-bottom:1px solid var(--line);
+    font-size:13px;
+    color:var(--muted-2);
+  }
+  .blog-expand-content .content{
+    font-size:16px;
+    line-height:1.8;
+    color:var(--white);
+  }
+  .blog-expand-content .content p{
+    margin-bottom:20px;
+  }
+
+  /* ============ AUDIT BUTTON ANIMATION ============ */
+  .audit-card .approve button{
+    position:relative;
+    overflow:hidden;
+  }
+  .audit-card .approve button::before{
+    content:'';
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:0;
+    height:0;
+    background:rgba(255,255,255,0.3);
+    border-radius:50%;
+    transform:translate(-50%, -50%);
+    transition:width 0.6s, height 0.6s;
+    pointer-events:none;
+  }
+  .audit-card .approve button:active::before{
+    width:300px;
+    height:300px;
+  }
+  .audit-card .approve .pri{
+    transition:all 0.3s;
+  }
+  .audit-card .approve .pri:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 24px rgba(211,47,47,0.4);
+  }
+  .audit-card .approve .pri:active{
+    transform:translateY(0);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1100px){
+    .shell{padding:0 28px}
+    .nav-center{display:none}
+    .header-grid{grid-template-columns:auto 1fr auto}
+    .header-right .city{display:none}
+    .stack-grid{grid-template-columns:repeat(4,1fr)}
+    .stack-cell:nth-child(6n){border-right:1px solid var(--line)}
+    .stack-cell:nth-child(4n){border-right:none}
+    .stack-cell:nth-last-child(-n+6){border-bottom:1px solid var(--line)}
+    .stack-cell:nth-last-child(-n+4){border-bottom:none}
+    .services-head{grid-template-columns:1fr;gap:32px;align-items:start}
+    .services-head .right{justify-self:start}
+    .services-panel{grid-template-columns:1fr}
+    .services-panel .info{border-right:none;border-bottom:1px solid var(--line)}
+    .features-head{grid-template-columns:1fr;gap:32px}
+    .features-head .right{justify-self:start}
+    .features-grid{grid-template-columns:repeat(2,1fr)}
+    .feature-card:nth-child(3n){border-right:1px solid var(--line)}
+    .feature-card:nth-child(2n){border-right:none}
+    .feature-card:nth-last-child(-n+3){border-bottom:1px solid var(--line)}
+    .feature-card:nth-last-child(-n+2){border-bottom:none}
+    .quality-card{grid-template-columns:1fr}
+    .quality-card .left{border-right:none;border-bottom:1px solid var(--line)}
+    .chat-head{grid-template-columns:1fr;gap:32px}
+    .rotate-grid{grid-template-columns:1fr;gap:48px}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  }
+  @media (max-width:768px){
+    .shell{padding:0 20px}
+    .site-header .cta-link span{display:none}
+    .site-header .cta-link{padding:11px}
+    .hero{padding:130px 0 60px}
+    .hero h1{font-size:48px}
+    .hero p.sub{font-size:16px}
+    .hero-flow{padding:20px}
+    .hero-flow-steps{grid-template-columns:1fr 1fr;gap:10px}
+    .stack{padding:80px 0}
+    .stack-grid{grid-template-columns:repeat(3,1fr)}
+    .stack-cell:nth-child(4n){border-right:1px solid var(--line)}
+    .stack-cell:nth-child(3n){border-right:none}
+    .stack-cell:nth-last-child(-n+4){border-bottom:1px solid var(--line)}
+    .stack-cell:nth-last-child(-n+3){border-bottom:none}
+    .services-section,.metrics,.testimonial,.how,.chat-section,.features,.quality,.blog{padding:80px 0}
+    .services-tabs{flex-direction:column}
+    .services-tab{border-right:none;border-bottom:1px solid var(--line)}
+    .services-panel .info{padding:32px 24px}
+    .services-panel .visual{padding:32px 24px}
+    .services-panel .info h3{font-size:28px}
+    .metrics-grid{grid-template-columns:1fr}
+    .metric-card{border-right:none;border-bottom:1px solid var(--line);padding:40px 28px}
+    .metric-card:last-child{border-bottom:none}
+    .quote-card{padding:40px 28px;grid-template-columns:1fr;gap:32px}
+    .rotate-section{height:auto}
+    .rotate-sticky{position:relative;height:auto;padding:60px 0}
+    .how-row{grid-template-columns:1fr;gap:40px;padding:60px 0}
+    .how-row.reverse .text-col{order:1}
+    .how-row.reverse .visual-col{order:2}
+    .features-grid{grid-template-columns:1fr}
+    .feature-card{border-right:none;border-bottom:1px solid var(--line)}
+    .feature-card:last-child{border-bottom:none}
+    .quality-card .left,.quality-card .right{padding:32px 24px}
+    .chat-body{padding:24px}
+    .msg{max-width:90%}
+    .blog-grid{grid-template-columns:1fr}
+    .blog-head{flex-direction:column;align-items:flex-start;gap:20px}
+    .cta{padding:90px 0}
+    .cta h2{font-size:48px}
+    .footer-grid{grid-template-columns:1fr;gap:32px}
+    .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SCHEMA.ORG MARKUP ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PageX",
+  "url": "https://pagex.studio",
+  "logo": "https://pagex.studio/logo.svg",
+  "description": "Веб-студия создания современных сайтов на заказ. Лендинги, корпоративные сайты, интернет-магазины и веб-приложения.",
+  "sameAs": [
+    "https://t.me/pagex"
+  ],
+  "contact": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "email": "hi@pagex.dev",
+    "url": "https://pagex.studio"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "PageX Web Studio",
+  "image": "https://pagex.studio/logo.svg",
+  "description": "Веб-студия профессиональной разработки сайтов и веб-приложений на заказ",
+  "url": "https://pagex.studio",
+  "telephone": "+7-999-000-00-00",
+  "email": "hi@pagex.dev",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Moscow",
+    "addressRegion": "Moscow",
+    "addressCountry": "RU"
+  },
+  "areaServed": "RU",
+  "priceRange": "₽₽",
+  "Service": [
+    {
+      "@type": "Service",
+      "name": "Лендинги",
+      "description": "Одностраничные сайты с высокой конверсией",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "price": "10000"
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Корпоративные сайты",
+      "description": "Многостраничные сайты компании с интеграциями",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "price": "35000"
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Интернет-магазины",
+      "description": "Сайты для электронной коммерции с платежами",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "price": "65000"
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Веб-приложения",
+      "description": "Кастомные SaaS и личные кабинеты",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "price": "120000"
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Какой минимальный срок разработки?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Минимальный срок от 5 дней для лендингов. В среднем сроки 7 дней - неделя работы от ТЗ до запуска."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Какова минимальная цена проекта?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Минимальная цена начинается от 10 000 рублей для лендингов. Корпоративные сайты от 35 000, магазины от 65 000, веб-приложения от 120 000 рублей."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Какие технологии вы используете?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Мы работаем со всем стеком: HTML5, CSS3, JavaScript, React, Next.js, Vue, Node.js, TypeScript, PostgreSQL, Stripe и другими современными технологиями."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Включена ли поддержка после запуска?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да, в каждый проект входит месяц бесплатной поддержки после запуска. Правим баги, помогаем с контентом и отвечаем на вопросы."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="header">
+  <div class="shell header-grid">
+    <a href="#hero" class="brand">
+      <span class="mark">X</span>
+      <span>PageX</span>
+    </a>
+    <nav class="nav-center">
+      <a href="#stack">Стек</a>
+      <a href="#services">Услуги</a>
+      <a href="#how">Процесс</a>
+      <a href="#features">Возможности</a>
+    </nav>
+    <div class="header-right">
+      <span class="city">МСК · 24/7</span>
+      <button class="theme-toggle" id="themeToggle" title="Переключить тему">
+        <span class="theme-toggle-circle">
+          <span class="theme-toggle-icon">☀️</span>
+        </span>
+      </button>
+      <a href="#cta" class="cta-link">
+        <span>Оставить ТЗ</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero parallax-bg" id="hero">
+  <div class="hero-glow parallax-layer"></div>
+  <div class="shell hero-inner parallax-content">
+    <h1>Сайт по вашему <span class="red">ТЗ.</span><br>Под ключ за <span class="stroke">7 дней.</span></h1>
+    <p class="sub">Вы пишете техническое задание — мы создаём готовый сайт. Дизайн, вёрстка, код, запуск. Никаких лишних встреч и воды.</p>
+    <div class="actions">
+      <a href="#cta" class="btn btn-primary">Оставить ТЗ
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#how" class="btn btn-ghost">Как это работает</a>
+    </div>
+
+    <!-- workflow illustration -->
+    <div class="hero-flow">
+      <div class="hero-flow-header">
+        <div class="who">
+          <div class="ava">А</div>
+          <div class="who-name">Алексей, основатель CoffeeLab<span>прислал ТЗ · 14:22</span></div>
+        </div>
+        <div class="status"><span class="live"></span>В работе</div>
+      </div>
+      <div class="hero-flow-steps">
+        <div class="hero-flow-step done">
+          <div class="top-row"><div class="step-num">/ 01</div><div class="check"></div></div>
+          <div class="name">ТЗ принято</div>
+          <div class="meta">14:22</div>
+          <div class="bar"><i></i></div>
+        </div>
+        <div class="hero-flow-step done">
+          <div class="top-row"><div class="step-num">/ 02</div><div class="check"></div></div>
+          <div class="name">Согласовано</div>
+          <div class="meta">15:48</div>
+          <div class="bar"><i></i></div>
+        </div>
+        <div class="hero-flow-step active">
+          <div class="top-row"><div class="step-num">/ 03</div><div class="check"></div></div>
+          <div class="name">Разработка</div>
+          <div class="meta">3-й день</div>
+          <div class="bar"><i></i></div>
+        </div>
+        <div class="hero-flow-step">
+          <div class="top-row"><div class="step-num">/ 04</div><div class="check"></div></div>
+          <div class="name">Запуск</div>
+          <div class="meta">7-й день</div>
+          <div class="bar"><i></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section class="stack" id="stack">
+  <div class="shell">
+    <div class="stack-head">
+      <span class="label"><span class="num">01</span>СТЕК</span>
+      <h2>Работаем с любым стеком.<br><span class="red">Без</span> переписывания.</h2>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h20l-1.8 20L12 24l-8.2-2L2 2zm16.5 5H8.5L8.7 9.4h9.6l-.6 6.6-5.2 1.4-5.2-1.4-.4-3.6h2.4l.2 1.8 3 0.8 3-0.8.3-3.4H6.7l-.4-5.4h12.6L18.5 7z"/></svg><span class="name">HTML5</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h20l-1.8 20L12 24l-8.2-2L2 2zm15 7H7.6l.3 2.4h9.4L17 15.4l-5 1.4-5-1.4-.3-2.6h2.4l.1 1.4 2.8.7 2.8-.7.3-3H6.9l-.4-5.4h12.5L18.7 9z"/></svg><span class="name">CSS3</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h20v20H2V2zm10.5 15.6c0 1.4-.8 2-2 2-.9 0-1.4-.5-1.8-1l1.4-.9c.2.4.4.7.9.7s.8-.2.8-.9V12h1.7v5.6zm5 .2c-1.7 0-2.8-.8-3.3-1.9l1.4-.8c.4.6.9 1.1 1.7 1.1.7 0 1.2-.4 1.2-.9 0-.6-.5-.9-1.3-1.2l-.5-.2c-1.3-.6-2.2-1.3-2.2-2.7 0-1.3 1-2.3 2.6-2.3 1.1 0 1.9.4 2.5 1.4l-1.4.9c-.3-.5-.6-.7-1.1-.7s-.9.3-.9.7c0 .5.3.7 1.1 1l.5.2c1.5.6 2.4 1.3 2.4 2.8 0 1.6-1.2 2.5-2.9 2.5z"/></svg><span class="name">JavaScript</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="currentColor" stroke-width="1"/><ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="currentColor" stroke-width="1" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="currentColor" stroke-width="1" transform="rotate(120 12 12)"/></svg><span class="name">React</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 256 256" fill="currentColor"><path d="m128 0 128 222H0z"/></svg><span class="name">Next.js</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 20h20L12 2zm0 4 7 12H5l7-12z"/></svg><span class="name">Vue</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1 4 4 6-4 6V6z"/></svg><span class="name">Astro</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4c-4.4 0-7.2 2.2-8.4 6.6 1.8-2.4 3.9-3.3 6.3-2.7 1.4.3 2.4 1.3 3.5 2.5 1.8 1.8 3.9 4 8.6 4 4.4 0 7.2-2.2 8.4-6.6-1.8 2.4-3.9 3.3-6.3 2.7-1.4-.3-2.4-1.3-3.5-2.5C18.8 6.2 16.7 4 12 4zM3.6 13.4C2.4 17.8 5.2 20 9.6 20c4.7 0 6.8-2.2 8.6-4 1.1-1.2 2.1-2.2 3.5-2.5 2.4-.6 4.5.3 6.3 2.7-1.2-4.4-4-6.6-8.4-6.6-4.7 0-6.8 2.2-8.6 4-1.1 1.2-2.1 2.2-3.5 2.5-2.4.6-4.5-.3-6.3-2.7z" transform="scale(0.7) translate(5 0)"/></svg><span class="name">Tailwind</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 7v10l10 5 10-5V7L12 2zm6 14.2-6 3-6-3V8.8l6-3 6 3v7.4z"/></svg><span class="name">Node.js</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm9 4-5 8h3v3l5-8h-3V7z"/></svg><span class="name">TypeScript</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2"/></svg><span class="name">PostgreSQL</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="18" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M7 14h2"/></svg><span class="name">Stripe</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 12l10 10 10-10L12 2zm0 4 6 6-6 6-6-6 6-6z"/></svg><span class="name">WordPress</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2V4zm0 6h20v4H2v-4zm0 6h20v4H2v-4z"/></svg><span class="name">Tilda</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v6h-9v6h-9V3zm9 12h9v6h-9v-6z"/></svg><span class="name">Webflow</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 1 1 16.1-3.8z" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="name">Telegram</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 6v6c0 5 3.5 9.7 8 11 4.5-1.3 8-6 8-11V6l-8-4z" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="name">ЮKassa</span></div>
+      <div class="stack-cell"><svg class="stack-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span class="name">amoCRM</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES TABS ============ -->
+<section class="services-section" id="services">
+  <div class="shell">
+    <div class="services-head">
+      <div class="left">
+        <span class="label"><span class="num">02</span>Услуги</span>
+        <h2>4 типа сайтов.<br><span class="stroke">Под</span> ваши<br><span class="red">задачи.</span></h2>
+      </div>
+      <div class="right">
+        Любой тип сайта — от одностраничников до магазинов с тысячами товаров. Без шаблонов, конструкторов и no-code пузыря.
+      </div>
+    </div>
+
+    <div class="services-tabs" id="servicesTabs">
+      <button class="services-tab active" data-panel="0"><span class="tab-num">01 / 04</span><span class="tab-name">Лендинги</span></button>
+      <button class="services-tab" data-panel="1"><span class="tab-num">02 / 04</span><span class="tab-name">Корпоративные</span></button>
+      <button class="services-tab" data-panel="2"><span class="tab-num">03 / 04</span><span class="tab-name">Магазины</span></button>
+      <button class="services-tab" data-panel="3"><span class="tab-num">04 / 04</span><span class="tab-name">Веб-приложения</span></button>
+    </div>
+
+    <div class="services-panel-wrap" id="servicesPanels">
+      <div class="services-panel active" data-panel="0">
+        <div class="info">
+          <span class="label"><span class="num">01</span>Лендинги</span>
+          <h3>Лендинг с конверсией от 8%</h3>
+          <p>Одностраничный сайт под чёткую цель: заявки, продажи, регистрации. Быстро, конверсионно, без лишнего.</p>
+          <ul>
+            <li>Адаптив под все экраны</li>
+            <li>Подключённая аналитика</li>
+            <li>SEO-разметка из коробки</li>
+            <li>Скорость загрузки &lt; 2 секунд</li>
+          </ul>
+          <div class="price">
+            <div><div class="from">от</div><div class="num">10<span class="acc">k</span> ₽</div><div class="term">срок 5–10 дней</div></div>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="mockup">
+            <div class="m-top"><i></i><i></i><i></i></div>
+            <div class="m-body">
+              <div class="ln w-90"></div>
+              <div class="ln w-70"></div>
+              <div class="ln w-50"></div>
+              <div class="ln thin"></div>
+              <div class="ln red"></div>
+              <div class="grid-3"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="services-panel" data-panel="1">
+        <div class="info">
+          <span class="label"><span class="num">02</span>Корпоративные сайты</span>
+          <h3>Сайт компании, который вызывает доверие</h3>
+          <p>Многостраничный сайт с услугами, кейсами, командой и формами заявок. Подключение CRM и почтовых рассылок.</p>
+          <ul>
+            <li>До 30 страниц контента</li>
+            <li>Интеграция с CRM и почтой</li>
+            <li>Каталог услуг с фильтрами</li>
+            <li>Многоязычность по запросу</li>
+          </ul>
+          <div class="price">
+            <div><div class="from">от</div><div class="num">35<span class="acc">k</span> ₽</div><div class="term">срок 14–21 день</div></div>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="mockup">
+            <div class="m-top"><i></i><i></i><i></i></div>
+            <div class="m-body">
+              <div class="ln w-90"></div>
+              <div class="ln w-70"></div>
+              <div class="grid-3"><div></div><div></div><div></div></div>
+              <div class="ln w-50"></div>
+              <div class="ln red"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="services-panel" data-panel="2">
+        <div class="info">
+          <span class="label"><span class="num">03</span>Интернет-магазины</span>
+          <h3>Магазин, готовый принимать заказы</h3>
+          <p>С каталогом, корзиной, оплатой, личным кабинетом и доставкой. Готовы продавать с первого дня запуска.</p>
+          <ul>
+            <li>Каталог до 10 000 товаров</li>
+            <li>Оплата ЮKassa / Stripe</li>
+            <li>Личный кабинет покупателя</li>
+            <li>Интеграция с СДЭК / Boxberry</li>
+          </ul>
+          <div class="price">
+            <div><div class="from">от</div><div class="num">65<span class="acc">k</span> ₽</div><div class="term">срок 21–35 дней</div></div>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="mockup">
+            <div class="m-top"><i></i><i></i><i></i></div>
+            <div class="m-body">
+              <div class="ln w-50"></div>
+              <div class="grid-3"><div></div><div></div><div></div></div>
+              <div class="grid-3"><div></div><div></div><div></div></div>
+              <div class="ln red"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="services-panel" data-panel="3">
+        <div class="info">
+          <span class="label"><span class="num">04</span>Веб-приложения</span>
+          <h3>Кастомные SaaS и личные кабинеты</h3>
+          <p>Сложные приложения с авторизацией, базой данных, ролями и интеграциями. От MVP до боевого продакшена.</p>
+          <ul>
+            <li>Авторизация и роли</li>
+            <li>API-интеграции</li>
+            <li>Дашборды и аналитика</li>
+            <li>Поддержка после запуска</li>
+          </ul>
+          <div class="price">
+            <div><div class="from">от</div><div class="num">120<span class="acc">k</span> ₽</div><div class="term">срок 30–60 дней</div></div>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="mockup">
+            <div class="m-top"><i></i><i></i><i></i></div>
+            <div class="m-body">
+              <div class="ln w-90"></div>
+              <div class="grid-3"><div></div><div></div><div></div></div>
+              <div class="ln w-70"></div>
+              <div class="ln w-50"></div>
+              <div class="ln red"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METRICS ============ -->
+<section class="metrics">
+  <div class="shell">
+    <div class="metrics-head">
+      <span class="label"><span class="num">03</span>Цифры</span>
+      <h2>Не обещаем. <span class="red">Делаем.</span></h2>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="top">
+          <div class="num">7<span class="acc">.</span></div>
+          <div class="corner">/ дней<br>средний срок</div>
+        </div>
+        <div class="name">Срок сдачи</div>
+        <div class="desc">От первого письма до запуска проекта в продакшен.</div>
+      </div>
+      <div class="metric-card">
+        <div class="top">
+          <div class="num">142<span class="acc">+</span></div>
+          <div class="corner">/ проектов<br>с 2021 года</div>
+        </div>
+        <div class="name">Сайтов сдано</div>
+        <div class="desc">От лендингов до магазинов — все запущены и работают.</div>
+      </div>
+      <div class="metric-card">
+        <div class="top">
+          <div class="num">100<span class="acc">%</span></div>
+          <div class="corner">/ срок<br>гарантирован</div>
+        </div>
+        <div class="name">В срок</div>
+        <div class="desc">Не уложились — вернём 20% стоимости. Просто.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL ============ -->
+<section class="testimonial">
+  <div class="shell">
+    <div class="quote-card">
+      <div class="left">
+        <div class="avatars">
+          <div class="ava">К</div>
+          <div class="ava">М</div>
+          <div class="ava">С</div>
+          <div class="ava red">PX</div>
+        </div>
+        <div class="who-block">
+          <div class="name">Михаил Селезнёв</div>
+          <div class="role">CEO · CoffeeLab</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="qm">"</div>
+        <blockquote>PageX сделали лендинг за 5 дней. Конверсия выросла в 2 раза, а стоимость привлечения упала на треть. Лучшая инвестиция за квартал.</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 360° ROTATE (KEPT) ============ -->
+<section class="rotate-section" id="rotate">
+  <div class="rotate-sticky">
+    <div class="rotate-glow"></div>
+    <div class="shell rotate-grid">
+      <div class="rotate-left">
+        <span class="label"><span class="num">04</span>Процесс рождения</span>
+        <h2>Смотрите<br><span class="stroke">как рождается</span><br>ваш <span class="red">сайт.</span></h2>
+        <ul class="rotate-steps" id="rotateSteps">
+          <li><span class="idx">/01</span><span class="name">Принимаем ТЗ</span><span class="pct">00 — 33</span></li>
+          <li><span class="idx">/02</span><span class="name">Разрабатываем</span><span class="pct">33 — 66</span></li>
+          <li><span class="idx">/03</span><span class="name">Сдаём готовый</span><span class="pct">66 — 100</span></li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="browser" id="browser">
+          <div class="face face-front">
+            <div class="chrome">
+              <div class="dots"><i></i><i></i><i></i></div>
+              <div class="urlbar"><span class="lock"></span>https://your-site.ru</div>
+            </div>
+            <div class="fake-site">
+              <div class="fs-nav">
+                <div class="fs-logo">Your<span>X</span>Site</div>
+                <div class="fs-nav-links"><span></span><span></span><span></span></div>
+              </div>
+              <div class="fs-hero">
+                <div class="line w-90"></div>
+                <div class="line w-70"></div>
+                <div class="line w-50"></div>
+                <div class="line thin"></div>
+                <div class="fs-btn"></div>
+              </div>
+              <div class="fs-cards">
+                <div class="fs-card"><div class="chip-row"><div class="chip"></div><div class="num">01</div></div><div class="bars"><div class="bar"></div><div class="bar sm"></div></div></div>
+                <div class="fs-card"><div class="chip-row"><div class="chip"></div><div class="num">02</div></div><div class="bars"><div class="bar"></div><div class="bar sm"></div></div></div>
+                <div class="fs-card"><div class="chip-row"><div class="chip"></div><div class="num">03</div></div><div class="bars"><div class="bar"></div><div class="bar sm"></div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="face face-back">
+            <div class="small-cap">/ Готово</div>
+            <h3>Ваш сайт<br>уже готов.</h3>
+            <div class="meta"><span class="dot"></span>Запуск через 24ч</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS (alternating) ============ -->
+<section class="how" id="how">
+  <div class="shell">
+    <div class="how-head">
+      <span class="label"><span class="num">05</span>Процесс</span>
+      <h2>4 шага от ТЗ <span class="red">до запуска.</span></h2>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="how-row">
+      <div class="text-col">
+        <span class="step-num">/ Шаг 01 — день 1</span>
+        <h3>Вы пишете ТЗ</h3>
+        <p>Описываете задачу своими словами — текстом, голосом или в блокноте. Мы умеем читать кривые формулировки и задавать правильные вопросы.</p>
+        <ul class="features">
+          <li><span class="ic"></span>Принимаем в любом формате — текст, голос, скриншоты</li>
+          <li><span class="ic"></span>Без обязательных созвонов</li>
+          <li><span class="ic"></span>Ответ в течение часа в рабочее время</li>
+        </ul>
+      </div>
+      <div class="visual-col">
+        <div class="visual-brief">
+          <div class="vb-head">
+            <div class="t">/ Brief #142</div>
+            <div class="badge">NEW</div>
+          </div>
+          <div class="field">
+            <div class="lbl">Тип</div>
+            <div class="stack"><div class="ln"></div></div>
+          </div>
+          <div class="field">
+            <div class="lbl">Описание</div>
+            <div class="stack">
+              <div class="ln"></div>
+              <div class="ln"></div>
+              <div class="ln short"></div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="lbl">Срок</div>
+            <div class="stack"><div class="ln short"></div></div>
+          </div>
+          <div class="typing"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="how-row reverse">
+      <div class="text-col">
+        <span class="step-num">/ Шаг 02 — день 1–2</span>
+        <h3>Мы согласовываем смету</h3>
+        <p>Уточняем детали, фиксируем сроки и стоимость. Одно письмо, одна оценка, никакой бюрократии и «давайте обсудим на созвоне».</p>
+        <ul class="features">
+          <li><span class="ic"></span>Прозрачная разбивка по этапам</li>
+          <li><span class="ic"></span>Договор и счёт за 1 рабочий день</li>
+          <li><span class="ic"></span>50% предоплаты, 50% после сдачи</li>
+        </ul>
+      </div>
+      <div class="visual-col">
+        <div class="visual-est">
+          <div class="vh">/ Estimate · CoffeeLab</div>
+          <div class="row"><span class="k">Дизайн</span><span class="v">18 000 ₽</span></div>
+          <div class="row"><span class="k">Вёрстка</span><span class="v">22 000 ₽</span></div>
+          <div class="row"><span class="k">Анимации</span><span class="v">12 000 ₽</span></div>
+          <div class="row"><span class="k">Аналитика</span><span class="v">8 000 ₽</span></div>
+          <div class="total"><span class="t">/ Итого</span><span class="price">60 000 ₽</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="how-row">
+      <div class="text-col">
+        <span class="step-num">/ Шаг 03 — день 3–6</span>
+        <h3>Разрабатываем и показываем</h3>
+        <p>Дизайн → вёрстка → код. Каждый день вы видите прогресс на закрытом стейджинге и можете внести правки до сдачи.</p>
+        <ul class="features">
+          <li><span class="ic"></span>Ежедневный билд на стейджинге</li>
+          <li><span class="ic"></span>Без чёрного ящика — видно весь прогресс</li>
+          <li><span class="ic"></span>До 3 раундов правок включены</li>
+        </ul>
+      </div>
+      <div class="visual-col">
+        <div class="visual-code">
+          <div class="ch"><i></i><i></i><i></i><span class="file">page.tsx</span></div>
+<pre><span class="k">export default</span> <span class="k">function</span> Page() {
+  <span class="k">return</span> (
+    &lt;<span class="s">main</span>&gt;
+      &lt;<span class="s">Hero</span>
+        title=<span class="s">"CoffeeLab"</span>
+        cta=<span class="s">"Заказать"</span>
+      /&gt;
+      <span class="c">{/* secondary block */}</span>
+      &lt;<span class="s">Features</span> /&gt;
+    &lt;/<span class="s">main</span>&gt;
+  )
+}</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="how-row reverse">
+      <div class="text-col">
+        <span class="step-num">/ Шаг 04 — день 7</span>
+        <h3>Сдаём результат</h3>
+        <p>Готовый сайт на вашем домене. Подключаем аналитику, настраиваем формы, проводим финальный аудит. Поддержка первого месяца — в подарок.</p>
+        <ul class="features">
+          <li><span class="ic"></span>Подключение домена и SSL</li>
+          <li><span class="ic"></span>Настройка целей в Метрике / GA</li>
+          <li><span class="ic"></span>Месяц поддержки бесплатно</li>
+        </ul>
+      </div>
+      <div class="visual-col">
+        <div class="visual-deploy">
+          <div class="vh">/ Production · live</div>
+          <div class="url-row"><span class="dot"></span><span class="u">coffeelab.ru</span></div>
+          <div class="checks">
+            <div class="c-row"><span class="l">Lighthouse score</span><span class="ok">98 / 100</span></div>
+            <div class="c-row"><span class="l">SSL сертификат</span><span class="ok">активен</span></div>
+            <div class="c-row"><span class="l">Аналитика</span><span class="ok">подключена</span></div>
+            <div class="c-row"><span class="l">Формы</span><span class="ok">работают</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAT DEMO ============ -->
+<!-- ============ FEATURES GRID ============ -->
+<section class="features" id="features">
+  <div class="shell">
+    <div class="features-head">
+      <div class="left">
+        <span class="label"><span class="num">06</span>Что внутри</span>
+        <h2>Каждый сайт —<br><span class="red">с этим набором.</span></h2>
+      </div>
+      <div class="right">
+        Не доплачиваете отдельно за «адаптив», «SEO» или «скорость». Это базовый стандарт каждого нашего проекта.
+      </div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="num">/ 01</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M2 20h20"/></svg></div>
+        <h3>Адаптив под все экраны</h3>
+        <p>От 320 пикселей до 4K. Тестируем на реальных устройствах, а не только в DevTools.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">/ 02</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3>SEO-готовность</h3>
+        <p>Семантическая разметка, OG-теги, sitemap.xml, robots.txt и микроразметка из коробки.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">/ 03</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Скорость &lt; 2 секунд</h3>
+        <p>Lighthouse 95+, оптимизированные изображения, ленивая загрузка, минификация всего.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">/ 04</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9.7 8 11 4.5-1.3 8-6 8-11V6l-8-4z"/></svg></div>
+        <h3>Безопасность по умолчанию</h3>
+        <p>HTTPS, защита форм от спама, CSP-заголовки. Защита от XSS и CSRF на уровне фреймворка.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">/ 05</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg></div>
+        <h3>Аналитика подключена</h3>
+        <p>Yandex Metrika, GA4, цели и события настроены до запуска. Данные идут с первого визита.</p>
+      </div>
+      <div class="feature-card">
+        <span class="num">/ 06</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Поддержка 30 дней</h3>
+        <p>Месяц после запуска правим баги, помогаем с контентом и отвечаем на любые вопросы.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta parallax-bg" id="cta">
+  <div class="cta-glow parallax-layer"></div>
+  <div class="shell cta-inner parallax-content">
+    <span class="label"><span class="num">07</span>Начало работы</span>
+    <h2>Запустим ваш проект<br><span class="red">на этой неделе.</span></h2>
+    <p>Пришлите ТЗ — даже черновое. В течение часа ответим со сметой и сроками. Никакой воды и созвонов «для знакомства».</p>
+    <div class="actions">
+      <a href="mailto:hi@pagex.dev" class="btn btn-primary">Оставить ТЗ
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://t.me/pagex" class="btn btn-ghost">Написать в Telegram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT FORM ============ -->
+<section class="contact-section" id="contact">
+  <div class="shell contact-inner">
+    <div style="text-align:center;margin-bottom:40px">
+      <span class="label" style="margin-bottom:16px;justify-content:center"><span class="num">08</span>Связь</span>
+      <h2 style="font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-0.025em;margin:0 auto">Напишите <span class="red">нам</span></h2>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="form-group">
+        <label for="contactName">Имя</label>
+        <input type="text" id="contactName" name="name" placeholder="Ваше имя" required>
+      </div>
+      <div class="form-group">
+        <label for="contactEmail">Email</label>
+        <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="contactMessage">Сообщение</label>
+        <textarea id="contactMessage" name="message" placeholder="Расскажите о вашем проекте..." required></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit">Отправить</button>
+        <button type="reset" style="background:var(--bg-2);color:var(--white);border-color:var(--line-strong)">Очистить</button>
+      </div>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="#hero" class="brand">
+          <span class="mark">X</span>
+          <span>PageX</span>
+        </a>
+        <p class="desc">Веб-разработка под ваше ТЗ. От лендингов до магазинов и кастомных приложений. С 2021 года.</p>
+      </div>
+      <div class="footer-col">
+        <h5>/ Услуги</h5>
+        <a href="#services">Лендинги</a>
+        <a href="#services">Корпоративные</a>
+        <a href="#services">Магазины</a>
+        <a href="#services">Веб-приложения</a>
+      </div>
+      <div class="footer-col">
+        <h5>/ Компания</h5>
+        <a href="#how">Процесс</a>
+        <a href="#features">Возможности</a>
+        <a href="#cta">Контакты</a>
+        <a href="#stack">Технологии</a>
+      </div>
+      <div class="footer-col">
+        <h5>/ Контакт</h5>
+        <a href="mailto:hi@pagex.dev">hi@pagex.dev</a>
+        <a href="https://t.me/pagex">@pagex</a>
+        <a href="#">МСК · 24/7</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="copy">© 2026 PageX Inc. Все права защищены.</div>
+      <div class="credit">Сделано вручную · No-code free zone</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ========= DARK/LIGHT MODE TOGGLE =========
+  const themeToggle = document.getElementById('themeToggle');
+  const htmlElement = document.documentElement;
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  
+  if(savedTheme === 'light') {
+    htmlElement.classList.add('light-mode');
+    themeToggle.classList.add('light');
+    themeToggle.innerHTML = '<span class="theme-toggle-circle"><span class="theme-toggle-icon">🌙</span></span>';
+  }
+  
+  themeToggle.addEventListener('click', () => {
+    const isLight = htmlElement.classList.toggle('light-mode');
+    themeToggle.classList.toggle('light', isLight);
+    const icon = isLight ? '🌙' : '☀️';
+    themeToggle.innerHTML = `<span class="theme-toggle-circle"><span class="theme-toggle-icon">${icon}</span></span>`;
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+
+  // ========= SMOOTH TEXT REVEAL =========
+  // Отключено - может быть применено вручную к элементам с классом .reveal-text
+  // Использование: <h2 class="reveal-text">Текст который будет появляться</h2>
+
+  // ========= CONTACT FORM BEAUTY =========
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  
+  if(contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      const message = document.getElementById('contactMessage').value;
+      
+      // Валидация
+      if(!name || !email || !message) {
+        formStatus.textContent = 'Пожалуйста, заполните все поля';
+        formStatus.className = 'form-status error';
+        setTimeout(() => formStatus.className = 'form-status', 3000);
+        return;
+      }
+      
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        formStatus.textContent = 'Пожалуйста, введите валидный email';
+        formStatus.className = 'form-status error';
+        setTimeout(() => formStatus.className = 'form-status', 3000);
+        return;
+      }
+      
+      // Успешная отправка (имитация)
+      formStatus.textContent = '✓ Спасибо! Мы получили ваше сообщение. Ответим вам вскоре!';
+      formStatus.className = 'form-status success';
+      
+      setTimeout(() => {
+        contactForm.reset();
+        formStatus.className = 'form-status';
+      }, 4000);
+    });
+  }
+
+  // ========= PARALLAX EFFECT =========
+  const parallaxLayers = document.querySelectorAll('.parallax-layer');
+  const onScrollParallax = () => {
+    parallaxLayers.forEach(layer => {
+      const rect = layer.parentElement.getBoundingClientRect();
+      const yOffset = window.scrollY * 0.5;
+      const elementOffset = window.scrollY + rect.top;
+      const parallaxOffset = (elementOffset - window.scrollY) * 0.3;
+      layer.style.transform = `translateY(${parallaxOffset}px)`;
+    });
+  };
+  window.addEventListener('scroll', onScrollParallax, { passive:true });
+  onScrollParallax();
+
+  // ========= HEADER SCROLL =========
+  const header = document.getElementById('header');
+  const onScrollHeader = () => {
+    if(window.scrollY > 20) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScrollHeader, { passive:true });
+  onScrollHeader();
+
+  // ========= SERVICES TABS =========
+  const tabs = document.querySelectorAll('.services-tab');
+  const panels = document.querySelectorAll('.services-panel');
+  tabs.forEach(t=>{
+    t.addEventListener('click', ()=>{
+      const idx = t.getAttribute('data-panel');
+      tabs.forEach(x=>x.classList.toggle('active', x===t));
+      panels.forEach(p=>p.classList.toggle('active', p.getAttribute('data-panel')===idx));
+    });
+  });
+
+  // ========= 360° SCROLL ROTATION =========
+  const rotateSection = document.getElementById('rotate');
+  const browser = document.getElementById('browser');
+  const stepEls = document.querySelectorAll('#rotateSteps li');
+  let targetRot = 0, currentRot = 0, rafId = null;
+
+  function updateTarget(){
+    const rect = rotateSection.getBoundingClientRect();
+    const sectionTop = window.scrollY + rect.top;
+    const sectionHeight = rotateSection.offsetHeight;
+    const winH = window.innerHeight;
+    let progress = (window.scrollY - sectionTop) / (sectionHeight - winH);
+    progress = Math.max(0, Math.min(1, progress));
+    targetRot = progress * 360;
+    let activeIdx = 0;
+    if(progress >= 0.66) activeIdx = 2;
+    else if(progress >= 0.33) activeIdx = 1;
+    stepEls.forEach((el,i)=>el.classList.toggle('active', i === activeIdx));
+  }
+  function loop(){
+    currentRot += (targetRot - currentRot) * 0.12;
+    browser.style.transform = `rotateY(${currentRot}deg)`;
+    if(Math.abs(targetRot - currentRot) > 0.05){
+      rafId = requestAnimationFrame(loop);
+    } else {
+      currentRot = targetRot;
+      browser.style.transform = `rotateY(${currentRot}deg)`;
+      rafId = null;
+    }
+  }
+  function onScrollRotate(){
+    updateTarget();
+    if(rafId === null) rafId = requestAnimationFrame(loop);
+  }
+  window.addEventListener('scroll', onScrollRotate, { passive:true });
+  window.addEventListener('resize', onScrollRotate);
+  updateTarget();
+  currentRot = targetRot;
+  browser.style.transform = `rotateY(${currentRot}deg)`;
+  if(stepEls[0]) stepEls[0].classList.add('active');
+
+  // ========= REVEAL =========
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold:0.12 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ========= FLOATING DISCOUNT BADGE =========
+  const discountBadge = document.getElementById('discountBadge');
+  const closeDiscount = document.getElementById('closeDiscount');
+  const claimDiscount = document.getElementById('claimDiscount');
+  
+  if(discountBadge && closeDiscount && claimDiscount){
+    let discountInterval;
+    
+    const showDiscount = () => {
+      discountBadge.classList.add('show');
+      setTimeout(() => {
+        discountBadge.classList.remove('show');
+      }, 8000);
+    };
+    
+    // Первый показ через 3 сек
+    setTimeout(showDiscount, 3000);
+    
+    // Каждую минуту показываем
+    discountInterval = setInterval(showDiscount, 60000);
+    
+    closeDiscount.addEventListener('click', (e) => {
+      e.preventDefault();
+      discountBadge.classList.remove('show');
+    });
+    
+    document.getElementById('laterDiscount').addEventListener('click', () => {
+      discountBadge.classList.remove('show');
+    });
+    
+    claimDiscount.addEventListener('click', () => {
+      document.querySelector('.cta')?.scrollIntoView({ behavior: 'smooth' });
+      discountBadge.classList.remove('show');
+    });
+  }
+
+  // ========= STACK MODAL =========
+  const stackData = {
+    'HTML5': { desc: 'Семантическая разметка современного веб-стандарта', features: ['Валидная структура', 'Доступность', 'SEO-оптимизация'] },
+    'CSS3': { desc: 'Современные стили с поддержкой анимаций и grid', features: ['Flex & Grid', 'Анимации', 'Адаптивный дизайн'] },
+    'JavaScript': { desc: 'Динамическая интерактивность и логика приложения', features: ['ES6+', 'Асинхронность', 'Оптимизация'] },
+    'React': { desc: 'Библиотека для построения интерактивных UI компонентов', features: ['Компоненты', 'Hooks', 'State Management'] },
+    'Next.js': { desc: 'React фреймворк для полнофункциональных веб-приложений', features: ['SSR/SSG', 'API Routes', 'Оптимизация'] },
+    'Vue': { desc: 'Прогрессивный фреймворк для UI с простым синтаксисом', features: ['Реактивность', 'Композиция', 'Производительность'] },
+    'Astro': { desc: 'Сборщик для создания быстрых многостраничных сайтов', features: ['Zero JS', 'Hydration', 'Content Collections'] },
+    'Node.js': { desc: 'JavaScript runtime для серверной разработки', features: ['Express/Fastify', 'Async I/O', 'Пакетный менеджер'] }
+  };
+
+  const stackCells = document.querySelectorAll('.stack-cell');
+  const modalOverlay = document.getElementById('stackModal');
+  const modalContent = document.querySelector('.modal-content');
+  const closeBtn = document.querySelector('.modal-close');
+
+  stackCells.forEach(cell => {
+    cell.style.cursor = 'pointer';
+    cell.addEventListener('click', () => {
+      const name = cell.querySelector('.name').textContent;
+      const data = stackData[name] || { desc: 'Технология современной веб-разработки', features: ['Интеграция', 'Производительность', 'Совместимость'] };
+      
+      modalContent.innerHTML = `
+        <button class="modal-close">×</button>
+        <span class="modal-tag">${name}</span>
+        <h3>${name}</h3>
+        <p>${data.desc}</p>
+        <ul class="features-list">
+          ${data.features.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+      `;
+      
+      modalOverlay.classList.add('active');
+      document.querySelector('.modal-close').addEventListener('click', () => {
+        modalOverlay.classList.remove('active');
+      });
+    });
+  });
+
+  if(modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if(e.target === modalOverlay) {
+        modalOverlay.classList.remove('active');
+      }
+    });
+  }
+
+  // ========= BLOG EXPAND =========
+  const blogPosts = {
+    0: {
+      title: 'Почему ТЗ голосовым сообщением — нормально',
+      author: 'PageX',
+      date: '05.03.2026',
+      readTime: '7',
+      content: 'Идеальное ТЗ не существует. Клиенты часто не знают, что им точно нужно. Мы умеем вытягивать суть из кривых формулировок и превращать 3-минутное аудио в полноценный бриф. За 30 минут. Это намного эффективнее двухчасовых созвонов, где люди спорят о мелочах. Голос передаёт интонацию, срочность, настроение. Это важнее слов. Мы слушаем не только то, ЧТО сказано, но и КАК сказано. Текстовое ТЗ часто холодное и механическое. Голос — живой. И работает лучше.'
+    },
+    1: {
+      title: 'Как мы сделали лендинг для CoffeeLab за 5 дней',
+      author: 'PageX',
+      date: '14.02.2026',
+      readTime: '5',
+      content: 'Михаил написал голосовое: "Лендинг под обжарку кофе. Бюджет 70к, неделя". Банально, но честно. Мы:день 1 — уточнили детали, согласовали смету (60к).день 2 — скинули первый макет в Figma.день 3-4 — вёрстка и код.день 5 — финальные правки и запуск. Конверсия выросла в 2 раза (с 1.2% до 2.8%) за первый месяц. Стоимость привлечения упала на треть. Лучшая инвестиция в квартал по его словам. Ключ — чёткий процесс и упор на конверсию, а не на красоту.'
+    }
+  };
+
+  const blogCards = document.querySelectorAll('.blog-card');
+  const blogExpand = document.getElementById('blogExpand');
+  const expandClose = document.getElementById('blogExpandClose');
+
+  blogCards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      const post = blogPosts[idx];
+      if(!post) return;
+      
+      const expandContent = document.querySelector('.blog-expand-content');
+      expandContent.innerHTML = `
+        <button class="blog-expand-close" id="blogExpandClose">×</button>
+        <h2>${post.title}</h2>
+        <div class="meta">
+          <span>${post.date}</span>
+          <span>· ${post.readTime} мин чтения</span>
+          <span>· ${post.author}</span>
+        </div>
+        <div class="content">
+          <p>${post.content}</p>
+        </div>
+      `;
+      
+      blogExpand.classList.add('active');
+      document.getElementById('blogExpandClose').addEventListener('click', () => {
+        blogExpand.classList.remove('active');
+      });
+    });
+  });
+
+  if(blogExpand) {
+    blogExpand.addEventListener('click', (e) => {
+      if(e.target === blogExpand) {
+        blogExpand.classList.remove('active');
+      }
+    });
+  }
+
+  // ========= AUDIT BUTTON FEEDBACK =========
+  const approveBtn = document.querySelector('.audit-card .approve .pri');
+  if(approveBtn) {
+    approveBtn.addEventListener('click', function(e) {
+      this.textContent = 'Принято! ✓';
+      this.style.background = 'rgba(80, 200, 120, 1)';
+      this.style.borderColor = 'rgba(80, 200, 120, 1)';
+      setTimeout(() => {
+        this.textContent = 'Approve →';
+        this.style.background = 'var(--red)';
+        this.style.borderColor = 'var(--red)';
+      }, 2000);
+    });
+  }
+</script>
+
+<!-- ============ MODALS ============ -->
+<div class="modal-overlay" id="stackModal">
+  <div class="modal-content"></div>
+</div>
+
+<div class="blog-expand" id="blogExpand">
+  <div class="blog-expand-content"></div>
+</div>
+
+<!-- ============ FLOATING DISCOUNT ============ -->
+<div class="discount-badge" id="discountBadge">
+  <button class="close" id="closeDiscount">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <circle cx="12" cy="12" r="10" class="close-circle"></circle>
+      <path d="M15 9l-6 6M9 9l6 6" class="close-cross"></path>
+    </svg>
+  </button>
+  <div class="tag">⚡ Спецпредложение</div>
+  <div class="title">Скидка 20%</div>
+  <div class="desc">на первый проект до конца месяца</div>
+  <div class="action">
+    <button class="btn-claim" id="claimDiscount">Получить</button>
+    <button class="btn-later" id="laterDiscount">Позже</button>
+  </div>
+</div>
+
+</body>
+</html>
