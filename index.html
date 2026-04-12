@@ -3271,7 +3271,7 @@
       <span class="label" style="margin-bottom:16px;justify-content:center"><span class="num">08</span>Связь</span>
       <h2 style="font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-0.025em;margin:0 auto">Напишите <span class="red">нам</span></h2>
     </div>
-    <form class="contact-form" id="contactForm">
+    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xojyaveg" method="POST">
       <div class="form-group">
         <label for="contactName">Имя</label>
         <input type="text" id="contactName" name="name" placeholder="Ваше имя" required>
@@ -3285,7 +3285,7 @@
         <textarea id="contactMessage" name="message" placeholder="Расскажите о вашем проекте..." required></textarea>
       </div>
       <div class="form-actions">
-        <button type="submit">Отправить</button>
+        <button type="submit" id="submitBtn">Отправить</button>
         <button type="reset" style="background:var(--bg-2);color:var(--white);border-color:var(--line-strong)">Очистить</button>
       </div>
       <div class="form-status" id="formStatus"></div>
@@ -3358,14 +3358,15 @@
   // Отключено - может быть применено вручную к элементам с классом .reveal-text
   // Использование: <h2 class="reveal-text">Текст который будет появляться</h2>
 
-  // ========= CONTACT FORM BEAUTY =========
+  // ========= CONTACT FORM WITH FORMSPREE =========
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
   
   if(contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
+      const submitBtn = document.getElementById('submitBtn');
       const name = document.getElementById('contactName').value;
       const email = document.getElementById('contactEmail').value;
       const message = document.getElementById('contactMessage').value;
@@ -3385,14 +3386,45 @@
         return;
       }
       
-      // Успешная отправка (имитация)
-      formStatus.textContent = '✓ Спасибо! Мы получили ваше сообщение. Ответим вам вскоре!';
-      formStatus.className = 'form-status success';
+      // Показываем "отправляется..."
+      submitBtn.textContent = 'Отправляется...';
+      submitBtn.disabled = true;
       
-      setTimeout(() => {
-        contactForm.reset();
-        formStatus.className = 'form-status';
-      }, 4000);
+      try {
+        // Отправляем форму на Formspree
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if(response.ok) {
+          // Успех!
+          formStatus.textContent = '✓ Спасибо! Мы получили ваше сообщение. Ответим вам вскоре!';
+          formStatus.className = 'form-status success';
+          contactForm.reset();
+          submitBtn.textContent = 'Отправить';
+          submitBtn.disabled = false;
+          
+          setTimeout(() => {
+            formStatus.className = 'form-status';
+          }, 4000);
+        } else {
+          throw new Error('Ошибка отправки');
+        }
+      } catch(err) {
+        // Ошибка
+        formStatus.textContent = 'Ошибка отправки. Попробуйте позже или напишите нам в Telegram.';
+        formStatus.className = 'form-status error';
+        submitBtn.textContent = 'Отправить';
+        submitBtn.disabled = false;
+        
+        setTimeout(() => {
+          formStatus.className = 'form-status';
+        }, 3000);
+      }
     });
   }
 
