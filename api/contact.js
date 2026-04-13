@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, message } = req.body;
+  const { name, email, telegram, message } = req.body;
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing fields' });
@@ -26,11 +26,16 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server misconfiguration' });
   }
 
+  const tgLine = telegram
+    ? `💬 <b>Telegram:</b> <a href="https://t.me/${escapeHtml(telegram)}">@${escapeHtml(telegram)}</a>\n`
+    : '';
+
   const text =
     `🆕 <b>Новое ТЗ с сайта PageX</b>\n\n` +
     `👤 <b>Имя:</b> ${escapeHtml(name)}\n` +
-    `📧 <b>Email:</b> ${escapeHtml(email)}\n\n` +
-    `📝 <b>Сообщение:</b>\n${escapeHtml(message)}`;
+    `📧 <b>Email:</b> ${escapeHtml(email)}\n` +
+    tgLine +
+    `\n📝 <b>Сообщение:</b>\n${escapeHtml(message)}`;
 
   const tgRes = await fetch(
     `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
