@@ -3271,7 +3271,7 @@
       <span class="label" style="margin-bottom:16px;justify-content:center"><span class="num">08</span>Связь</span>
       <h2 style="font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-0.025em;margin:0 auto">Напишите <span class="red">нам</span></h2>
     </div>
-    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xojyaveg" method="POST">
+    <form class="contact-form" id="contactForm" action="/api/contact" method="POST">
       <div class="form-group">
         <label for="contactName">Имя</label>
         <input type="text" id="contactName" name="name" placeholder="Ваше имя" required>
@@ -3358,7 +3358,7 @@
   // Отключено - может быть применено вручную к элементам с классом .reveal-text
   // Использование: <h2 class="reveal-text">Текст который будет появляться</h2>
 
-  // ========= CONTACT FORM WITH FORMSPREE =========
+  // ========= CONTACT FORM → TELEGRAM BOT =========
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
   
@@ -3391,15 +3391,15 @@
       submitBtn.disabled = true;
       
       try {
-        // Отправляем форму на Formspree
-        const response = await fetch(contactForm.action, {
+        // Отправляем форму на backend (Vercel Serverless → Telegram Bot)
+        const response = await fetch('/api/contact', {
           method: 'POST',
-          body: new FormData(contactForm),
+          body: JSON.stringify({ name, email, message }),
           headers: {
-            'Accept': 'application/json'
+            'Content-Type': 'application/json'
           }
         });
-        
+
         if(response.ok) {
           // Успех!
           formStatus.textContent = '✓ Спасибо! Мы получили ваше сообщение. Ответим вам вскоре!';
