@@ -2675,6 +2675,124 @@
     .metric-card:last-child{border-bottom:none}
   }
 
+  /* ============ PORTFOLIO ============ */
+  .portfolio{padding:120px 0;position:relative}
+  .portfolio-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    margin-bottom:64px;gap:32px;
+  }
+  .portfolio-head h2{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(48px,6vw,88px);
+    line-height:0.9;letter-spacing:-0.01em;
+  }
+  .portfolio-head .sub{
+    max-width:300px;color:var(--muted);
+    font-size:15px;line-height:1.6;
+  }
+  .portfolio-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  .pf-card{
+    display:block;
+    background:var(--bg-2);
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    text-decoration:none;
+    color:var(--white);
+    transition:transform 0.35s cubic-bezier(.2,.8,.3,1),
+               box-shadow 0.35s ease,
+               border-color 0.35s ease;
+    cursor:pointer;
+    position:relative;
+  }
+  .pf-card:hover{
+    transform:translateY(-10px);
+    border-color:var(--line-strong);
+    box-shadow:0 32px 64px rgba(0,0,0,0.55);
+  }
+  @keyframes pfLaunch{
+    0%  {transform:translateY(-10px) scale(1);   filter:brightness(1)}
+    45% {transform:translateY(-10px) scale(1.06);filter:brightness(1.3)}
+    100%{transform:translateY(-10px) scale(1.03);filter:brightness(0.7);opacity:.6}
+  }
+  .pf-card.launching{
+    animation:pfLaunch 0.32s cubic-bezier(.4,0,.2,1) forwards;
+    pointer-events:none;
+  }
+  .pf-preview{
+    height:220px;position:relative;overflow:hidden;
+  }
+  .pf-card:nth-child(1) .pf-preview{background:linear-gradient(135deg,#1a0808 0%,#3d1010 50%,#1a0808 100%)}
+  .pf-card:nth-child(2) .pf-preview{background:linear-gradient(135deg,#080f1a 0%,#102040 50%,#080f1a 100%)}
+  .pf-card:nth-child(3) .pf-preview{background:linear-gradient(135deg,#0e0a1a 0%,#2a1050 50%,#0e0a1a 100%)}
+  .pf-card:nth-child(4) .pf-preview{background:linear-gradient(135deg,#081510 0%,#0d3020 50%,#081510 100%)}
+  .pf-card:nth-child(5) .pf-preview{background:linear-gradient(135deg,#1a1008 0%,#3d2a0e 50%,#1a1008 100%)}
+  .pf-card:nth-child(6) .pf-preview{background:linear-gradient(135deg,#081418 0%,#0e2d35 50%,#081418 100%)}
+  .pf-browser{
+    position:absolute;inset:14px;
+    background:rgba(255,255,255,0.035);
+    border-radius:9px;overflow:hidden;
+    border:1px solid rgba(255,255,255,0.07);
+    transition:transform 0.35s cubic-bezier(.2,.8,.3,1);
+  }
+  .pf-card:hover .pf-browser{transform:scale(1.025) translateY(-2px)}
+  .pf-bar{
+    height:26px;background:rgba(255,255,255,0.055);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    display:flex;align-items:center;padding:0 10px;gap:5px;
+  }
+  .pf-bar i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.18)}
+  .pf-bar i:nth-child(1){background:rgba(255,87,87,0.45)}
+  .pf-bar i:nth-child(2){background:rgba(255,190,50,0.35)}
+  .pf-bar i:nth-child(3){background:rgba(87,210,87,0.35)}
+  .pf-body{padding:12px 10px;display:flex;flex-direction:column;gap:7px}
+  .pf-ln{height:6px;border-radius:3px;background:rgba(255,255,255,0.1)}
+  .pf-ln.w90{width:90%}.pf-ln.w70{width:70%}.pf-ln.w50{width:50%}
+  .pf-ln.thin{height:4px;background:rgba(255,255,255,0.06)}
+  .pf-ln.red{height:9px;width:38%;border-radius:4px}
+  .pf-card:nth-child(1) .pf-ln.red{background:rgba(211,47,47,0.85)}
+  .pf-card:nth-child(2) .pf-ln.red{background:rgba(25,100,210,0.85)}
+  .pf-card:nth-child(3) .pf-ln.red{background:rgba(120,50,190,0.85)}
+  .pf-card:nth-child(4) .pf-ln.red{background:rgba(40,150,60,0.85)}
+  .pf-card:nth-child(5) .pf-ln.red{background:rgba(220,100,20,0.85)}
+  .pf-card:nth-child(6) .pf-ln.red{background:rgba(0,150,165,0.85)}
+  .pf-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:2px}
+  .pf-cols div{height:44px;border-radius:5px;background:rgba(255,255,255,0.05)}
+  .pf-info{padding:20px 24px 24px;display:flex;flex-direction:column;gap:10px}
+  .pf-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .pf-name{font-size:17px;font-weight:700;letter-spacing:-0.02em}
+  .pf-tag{
+    font-size:10px;font-weight:600;letter-spacing:0.12em;
+    text-transform:uppercase;color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    background:var(--bg-4);border:1px solid var(--line);
+    padding:3px 9px;border-radius:4px;white-space:nowrap;
+  }
+  .pf-open{
+    font-size:11px;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--red);
+    font-family:'JetBrains Mono',monospace;
+    display:inline-flex;align-items:center;gap:7px;
+    transition:gap 0.2s ease;
+  }
+  .pf-open .arr{display:inline-block;transition:transform 0.2s ease}
+  .pf-card:hover .pf-open{gap:11px}
+  .pf-card:hover .pf-open .arr{transform:translateX(4px)}
+  :root.light-mode .pf-card{background:var(--bg-2);border-color:rgba(26,26,26,0.1)}
+  :root.light-mode .pf-tag{background:var(--bg-3);border-color:rgba(26,26,26,0.12)}
+  :root.light-mode .pf-browser{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.07)}
+  :root.light-mode .pf-bar{background:rgba(0,0,0,0.05);border-color:rgba(0,0,0,0.06)}
+  :root.light-mode .pf-ln{background:rgba(0,0,0,0.08)}
+  :root.light-mode .pf-ln.thin{background:rgba(0,0,0,0.05)}
+  :root.light-mode .pf-cols div{background:rgba(0,0,0,0.05)}
+  @media(max-width:900px){.portfolio-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:580px){
+    .portfolio-grid{grid-template-columns:1fr}
+    .portfolio-head{flex-direction:column;align-items:flex-start}
+  }
+
   /* ============ GRAIN TEXTURE ============ */
   body::after{
     content:'';
@@ -2824,6 +2942,7 @@
     <nav class="nav-center">
       <a href="#stack">Стек</a>
       <a href="#services">Услуги</a>
+      <a href="#portfolio">Портфолио</a>
       <a href="#how">Процесс</a>
       <a href="#features">Возможности</a>
     </nav>
@@ -3153,6 +3272,148 @@
         <div class="qm">"</div>
         <blockquote>PageX сделали лендинг за 5 дней. Конверсия выросла в 2 раза, а стоимость привлечения упала на треть. Лучшая инвестиция за квартал.</blockquote>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="portfolio" id="portfolio">
+  <div class="shell">
+    <div class="portfolio-head">
+      <div>
+        <span class="label"><span class="num">03</span>Портфолио</span>
+        <h2>Наши <span class="stroke">работы.</span><br>Живые <span class="red">сайты.</span></h2>
+      </div>
+      <p class="sub">Нажмите на проект — откроется готовый сайт. Каждый сделан с нуля под задачи клиента.</p>
+    </div>
+    <div class="portfolio-grid">
+
+      <a class="pf-card reveal" href="#" data-pf-url="#">
+        <div class="pf-preview">
+          <div class="pf-browser">
+            <div class="pf-bar"><i></i><i></i><i></i></div>
+            <div class="pf-body">
+              <div class="pf-ln red"></div>
+              <div class="pf-ln w70"></div>
+              <div class="pf-ln thin w90"></div>
+              <div class="pf-cols"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-meta">
+            <span class="pf-name">FitPro Studio</span>
+            <span class="pf-tag">Лендинг</span>
+          </div>
+          <span class="pf-open">Открыть сайт <span class="arr">→</span></span>
+        </div>
+      </a>
+
+      <a class="pf-card reveal" href="#" data-pf-url="#">
+        <div class="pf-preview">
+          <div class="pf-browser">
+            <div class="pf-bar"><i></i><i></i><i></i></div>
+            <div class="pf-body">
+              <div class="pf-ln red"></div>
+              <div class="pf-ln w50"></div>
+              <div class="pf-ln thin w90"></div>
+              <div class="pf-cols"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-meta">
+            <span class="pf-name">NordBuild</span>
+            <span class="pf-tag">Корпоративный</span>
+          </div>
+          <span class="pf-open">Открыть сайт <span class="arr">→</span></span>
+        </div>
+      </a>
+
+      <a class="pf-card reveal" href="#" data-pf-url="#">
+        <div class="pf-preview">
+          <div class="pf-browser">
+            <div class="pf-bar"><i></i><i></i><i></i></div>
+            <div class="pf-body">
+              <div class="pf-ln red"></div>
+              <div class="pf-ln w70"></div>
+              <div class="pf-ln thin w50"></div>
+              <div class="pf-cols"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-meta">
+            <span class="pf-name">Sakura</span>
+            <span class="pf-tag">Ресторан</span>
+          </div>
+          <span class="pf-open">Открыть сайт <span class="arr">→</span></span>
+        </div>
+      </a>
+
+      <a class="pf-card reveal" href="#" data-pf-url="#">
+        <div class="pf-preview">
+          <div class="pf-browser">
+            <div class="pf-bar"><i></i><i></i><i></i></div>
+            <div class="pf-body">
+              <div class="pf-ln red"></div>
+              <div class="pf-ln w90"></div>
+              <div class="pf-ln thin w70"></div>
+              <div class="pf-cols"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-meta">
+            <span class="pf-name">TechFlow</span>
+            <span class="pf-tag">Веб-приложение</span>
+          </div>
+          <span class="pf-open">Открыть сайт <span class="arr">→</span></span>
+        </div>
+      </a>
+
+      <a class="pf-card reveal" href="#" data-pf-url="#">
+        <div class="pf-preview">
+          <div class="pf-browser">
+            <div class="pf-bar"><i></i><i></i><i></i></div>
+            <div class="pf-body">
+              <div class="pf-ln red"></div>
+              <div class="pf-ln w70"></div>
+              <div class="pf-ln thin w50"></div>
+              <div class="pf-cols"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-meta">
+            <span class="pf-name">LuxRent</span>
+            <span class="pf-tag">Магазин</span>
+          </div>
+          <span class="pf-open">Открыть сайт <span class="arr">→</span></span>
+        </div>
+      </a>
+
+      <a class="pf-card reveal" href="#" data-pf-url="#">
+        <div class="pf-preview">
+          <div class="pf-browser">
+            <div class="pf-bar"><i></i><i></i><i></i></div>
+            <div class="pf-body">
+              <div class="pf-ln red"></div>
+              <div class="pf-ln w50"></div>
+              <div class="pf-ln thin w90"></div>
+              <div class="pf-cols"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-meta">
+            <span class="pf-name">MedPlus</span>
+            <span class="pf-tag">Корпоративный</span>
+          </div>
+          <span class="pf-open">Открыть сайт <span class="arr">→</span></span>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -3973,6 +4234,19 @@
       }, 2000);
     });
   }
+
+  // ========= PORTFOLIO LAUNCH EFFECT =========
+  document.querySelectorAll('.pf-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      e.preventDefault();
+      const url = this.getAttribute('data-pf-url');
+      this.classList.add('launching');
+      setTimeout(() => {
+        if (url && url !== '#') window.open(url, '_blank');
+        setTimeout(() => this.classList.remove('launching'), 350);
+      }, 300);
+    });
+  });
 </script>
 
 <!-- ============ CURSOR TRAIL ============ -->
