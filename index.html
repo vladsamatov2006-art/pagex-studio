@@ -216,8 +216,7 @@
   /* ============ HERO (ai.work pattern: centered) ============ */
   .hero{
     position:relative;
-    padding:160px 0 80px;
-    text-align:center;
+    padding:160px 0 100px;
     overflow:hidden;
     border-bottom:1px solid var(--line);
   }
@@ -226,66 +225,79 @@
   }
   .hero-glow.parallax-layer{
     position:absolute;
-    top:-200px;left:50%;
-    width:900px;height:900px;
-    transform:translateX(-50%);
-    background:radial-gradient(circle,rgba(211,47,47,0.07) 0%,transparent 60%);
+    top:-200px;left:25%;
+    width:1000px;height:1000px;
+    background:radial-gradient(circle,rgba(211,47,47,0.09) 0%,transparent 62%);
     pointer-events:none;
   }
   .hero-inner{position:relative;z-index:2}
-  .hero .intro{
+  /* SPLIT LAYOUT */
+  .hero-split{
+    display:grid;
+    grid-template-columns:1fr 440px;
+    gap:80px;
+    align-items:center;
+  }
+  .hero-kicker{
     display:inline-flex;
     align-items:center;
-    gap:8px;
-    padding:8px 14px;
-    border:1px solid rgba(211,47,47,0.3);
-    background:linear-gradient(135deg, rgba(211,47,47,0.08) 0%, rgba(240,240,240,0.02) 100%);
-    backdrop-filter:blur(10px);
-    font-size:12px;
-    font-weight:600;
-    color:var(--white);
-    margin-bottom:36px;
-    border-radius:8px;
-    animation:heroIntroWow 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+    gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:28px;
   }
-  @keyframes heroIntroWow{
-    0%{opacity:0;transform:translateY(-14px)}
-    100%{opacity:1;transform:translateY(0)}
-  }
-  .hero .intro .pill-dot{
-    width:6px;height:6px;
+  .hero-kicker::before{
+    content:'';width:24px;height:1px;
     background:var(--red);
-    border-radius:50%;
-    box-shadow:0 0 0 4px rgba(211,47,47,0.2);
+    flex-shrink:0;
   }
-  .hero .intro span{color:var(--muted-2)}
   .hero h1{
     font-family:'Bebas Neue','Inter',sans-serif;
-    font-size:clamp(72px,10vw,148px);
     font-weight:400;
+    margin:0 0 36px;
+  }
+  .hero h1 .h1-sm{
+    display:block;
+    font-size:clamp(32px,4.2vw,62px);
+    color:var(--muted-2);
+    line-height:0.95;
     letter-spacing:0.01em;
-    line-height:0.92;
-    max-width:1200px;
-    margin:0 auto 32px;
+  }
+  .hero h1 .h1-lg{
+    display:block;
+    font-size:clamp(88px,13vw,176px);
+    line-height:0.78;
+    letter-spacing:0.01em;
+  }
+  .hero h1 .h1-ghost{
+    display:block;
+    font-size:clamp(32px,4.2vw,62px);
+    -webkit-text-stroke:1.5px rgba(240,240,240,0.3);
+    color:transparent;
+    line-height:1.1;
+    letter-spacing:0.01em;
+    margin-top:8px;
   }
   .hero h1 .red{color:var(--red)}
-  .hero h1 .stroke{
-    -webkit-text-stroke:2px var(--white);
-    color:transparent;
-  }
   .hero p.sub{
-    font-size:19px;
+    font-size:17px;
     color:var(--muted-2);
-    max-width:640px;
-    margin:0 auto 44px;
-    line-height:1.55;
+    max-width:500px;
+    margin:0 0 40px;
+    line-height:1.62;
   }
   .hero .actions{
     display:flex;
     gap:14px;
-    justify-content:center;
     flex-wrap:wrap;
-    margin-bottom:80px;
+  }
+  .hero-right .hero-flow{
+    max-width:100%;
+    margin:0;
   }
 
   /* hero workflow illustration */
@@ -437,7 +449,7 @@
   /* ============ STACK / TECH GRID ============ */
   .stack{
     padding:120px 0;
-    background:var(--bg);
+    background:var(--bg-2);
     border-bottom:1px solid var(--line);
   }
   .stack-head{
@@ -446,10 +458,11 @@
   }
   .stack-head .label{margin-bottom:20px}
   .stack-head h2{
-    font-size:clamp(32px,4.4vw,56px);
-    font-weight:900;
-    letter-spacing:-0.035em;
-    line-height:1;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(48px,6vw,84px);
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:0.9;
     max-width:760px;
     margin:0 auto;
   }
@@ -503,10 +516,11 @@
   }
   .services-head .left .label{margin-bottom:18px}
   .services-head .left h2{
-    font-size:clamp(36px,5vw,68px);
-    font-weight:900;
-    letter-spacing:-0.035em;
-    line-height:0.95;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(48px,6.5vw,92px);
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:0.88;
   }
   .services-head .left h2 .red{color:var(--red)}
   .services-head .left h2 .stroke{
@@ -699,77 +713,85 @@
   /* ============ METRICS ============ */
   .metrics{
     padding:120px 0;
-    background:var(--bg);
+    background:var(--bg-3);
     border-bottom:1px solid var(--line);
   }
   .metrics-head{
     text-align:center;
-    margin-bottom:64px;
+    margin-bottom:72px;
   }
   .metrics-head .label{margin-bottom:20px}
   .metrics-head h2{
-    font-size:clamp(32px,4.4vw,56px);
-    font-weight:900;
-    letter-spacing:-0.035em;
-    line-height:1;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(48px,6vw,84px);
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:0.9;
     max-width:760px;
     margin:0 auto;
   }
   .metrics-head h2 .red{color:var(--red)}
+  /* BIG METRICS LAYOUT */
   .metrics-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    border:1px solid var(--line-strong);
-    background:var(--bg-2);
+    border-top:1px solid var(--line);
   }
   .metric-card{
-    padding:56px 40px;
+    padding:64px 56px;
     border-right:1px solid var(--line);
     display:flex;
     flex-direction:column;
-    gap:18px;
-    transition:background 0.25s ease;
+    gap:0;
+    position:relative;
+    overflow:hidden;
+    transition:background 0.3s ease;
   }
+  .metric-card::before{
+    content:'';
+    position:absolute;
+    bottom:0;left:0;right:0;
+    height:2px;
+    background:var(--red);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .metric-card:hover::before{transform:scaleX(1)}
   .metric-card:last-child{border-right:none}
-  .metric-card:hover{background:var(--bg-3)}
-  .metric-card .top{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-  }
+  .metric-card:hover{background:rgba(240,240,240,0.02)}
+  .metric-card .top{display:none}
   .metric-card .num{
-    font-size:clamp(56px,7vw,96px);
-    font-weight:900;
-    letter-spacing:-0.04em;
-    line-height:0.85;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(88px,11vw,152px);
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:0.82;
     color:var(--white);
+    margin-bottom:20px;
   }
   .metric-card .num .acc{color:var(--red)}
-  .metric-card .corner{
-    font-family:'JetBrains Mono',monospace;
-    font-size:10px;
-    color:var(--muted);
-    letter-spacing:0.15em;
-    text-transform:uppercase;
-    text-align:right;
-  }
+  .metric-card .corner{display:none}
   .metric-card .name{
-    font-size:16px;
-    font-weight:700;
+    font-size:11px;
+    font-weight:600;
     text-transform:uppercase;
-    letter-spacing:0.02em;
-    margin-top:auto;
+    letter-spacing:0.16em;
+    color:var(--muted);
+    margin-bottom:10px;
+    font-family:'JetBrains Mono',monospace;
   }
   .metric-card .desc{
-    font-size:13px;
+    font-size:14px;
     color:var(--muted-2);
-    line-height:1.55;
+    line-height:1.6;
+    max-width:260px;
   }
 
   /* ============ TESTIMONIAL ============ */
   .testimonial{
     padding:120px 0;
-    background:var(--bg);
+    background:var(--bg-2);
     border-bottom:1px solid var(--line);
   }
   .quote-card{
@@ -844,7 +866,7 @@
   .rotate-section{
     position:relative;
     height:340vh;
-    background:var(--bg);
+    background:var(--bg-3);
     border-bottom:1px solid var(--line);
   }
   .rotate-sticky{
@@ -875,10 +897,11 @@
   }
   .rotate-left .label{margin-bottom:32px}
   .rotate-left h2{
-    font-size:clamp(36px,4.6vw,68px);
-    font-weight:900;
-    letter-spacing:-0.035em;
-    line-height:0.92;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(48px,6vw,88px);
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:0.88;
     margin-bottom:48px;
   }
   .rotate-left h2 .red{color:var(--red)}
@@ -1085,10 +1108,11 @@
   }
   .how-head .label{margin-bottom:20px}
   .how-head h2{
-    font-size:clamp(36px,5vw,68px);
-    font-weight:900;
-    letter-spacing:-0.035em;
-    line-height:0.95;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(48px,6.5vw,92px);
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:0.88;
     max-width:780px;
     margin:0 auto;
   }
@@ -1559,7 +1583,7 @@
   /* ============ FEATURES GRID ============ */
   .features{
     padding:120px 0;
-    background:var(--bg);
+    background:var(--bg-2);
     border-bottom:1px solid var(--line);
   }
   .features-head{
@@ -1571,10 +1595,11 @@
   }
   .features-head .left .label{margin-bottom:18px}
   .features-head .left h2{
-    font-size:clamp(36px,5vw,68px);
-    font-weight:900;
-    letter-spacing:-0.035em;
-    line-height:0.95;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(48px,6.5vw,92px);
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:0.88;
   }
   .features-head .left h2 .red{color:var(--red)}
   .features-head .right{
@@ -1770,12 +1795,13 @@
   .cta-inner{position:relative;z-index:2}
   .cta .label{margin-bottom:24px}
   .cta h2{
-    font-size:clamp(40px,6.5vw,96px);
-    font-weight:900;
-    letter-spacing:-0.04em;
-    line-height:0.92;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(56px,8vw,128px);
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:0.85;
     margin-bottom:24px;
-    max-width:900px;
+    max-width:1000px;
     margin-left:auto;
     margin-right:auto;
   }
@@ -2582,13 +2608,13 @@
     .chat-head{grid-template-columns:1fr;gap:32px}
     .rotate-grid{grid-template-columns:1fr;gap:48px}
     .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+    .hero-split{grid-template-columns:1fr 360px;gap:48px}
   }
   @media (max-width:768px){
     .shell{padding:0 20px}
     .site-header .cta-link span{display:none}
     .site-header .cta-link{padding:11px}
     .hero{padding:130px 0 60px}
-    .hero h1{font-size:48px}
     .hero p.sub{font-size:16px}
     .hero-flow{padding:20px}
     .hero-flow-steps{grid-template-columns:1fr 1fr;gap:10px}
@@ -2604,9 +2630,6 @@
     .services-panel .info{padding:32px 24px}
     .services-panel .visual{padding:32px 24px}
     .services-panel .info h3{font-size:28px}
-    .metrics-grid{grid-template-columns:1fr}
-    .metric-card{border-right:none;border-bottom:1px solid var(--line);padding:40px 28px}
-    .metric-card:last-child{border-bottom:none}
     .quote-card{padding:40px 28px;grid-template-columns:1fr;gap:32px}
     .rotate-section{height:auto}
     .rotate-sticky{position:relative;height:auto;padding:60px 0}
@@ -2625,6 +2648,23 @@
     .cta h2{font-size:48px}
     .footer-grid{grid-template-columns:1fr;gap:32px}
     .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px}
+    .hero-split{grid-template-columns:1fr;gap:48px}
+    .hero-right{display:none}
+    .hero h1 .h1-lg{font-size:clamp(80px,18vw,130px)}
+    .metrics-grid{grid-template-columns:1fr}
+    .metric-card{border-right:none;border-bottom:1px solid var(--line);padding:40px 28px}
+    .metric-card:last-child{border-bottom:none}
+  }
+
+  /* ============ GRAIN TEXTURE ============ */
+  body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity:0.042;
+    pointer-events:none;
+    z-index:9998;
   }
 </style>
 </head>
@@ -2789,17 +2829,29 @@
 <section class="hero parallax-bg" id="hero">
   <div class="hero-glow parallax-layer"></div>
   <div class="shell hero-inner parallax-content">
-    <h1>Сайт по вашему <span class="red">ТЗ.</span><br>Под ключ за <span class="stroke">7 дней.</span></h1>
-    <p class="sub">Вы пишете техническое задание — мы создаём готовый сайт. Дизайн, вёрстка, код, запуск. Никаких лишних встреч и воды.</p>
-    <div class="actions">
-      <a href="#contact" class="btn btn-primary">Оставить ТЗ
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#how" class="btn btn-ghost">Как это работает</a>
-    </div>
+    <div class="hero-split">
 
-    <!-- workflow illustration -->
-    <div class="hero-flow">
+      <!-- LEFT: text -->
+      <div class="hero-left">
+        <div class="hero-kicker">Веб-студия · Москва · с 2021</div>
+        <h1>
+          <span class="h1-sm">Сайт по вашему</span>
+          <span class="h1-lg"><span class="red">ТЗ.</span></span>
+          <span class="h1-ghost">Под ключ за 7 дней.</span>
+        </h1>
+        <p class="sub">Вы пишете техническое задание — мы создаём готовый сайт. Дизайн, вёрстка, код, запуск. Никаких лишних встреч и воды.</p>
+        <div class="actions">
+          <a href="#contact" class="btn btn-primary">Оставить ТЗ
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#how" class="btn btn-ghost">Как это работает</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: workflow card -->
+      <div class="hero-right">
+        <!-- workflow illustration -->
+        <div class="hero-flow">
       <div class="hero-flow-header">
         <div class="who">
           <div class="ava">А</div>
@@ -2833,8 +2885,10 @@
           <div class="bar"><i></i></div>
         </div>
       </div>
-    </div>
-  </div>
+    </div><!-- /hero-flow -->
+      </div><!-- /hero-right -->
+    </div><!-- /hero-split -->
+  </div><!-- /shell -->
 </section>
 
 <!-- ============ MARQUEE STRIP ============ -->
@@ -3042,26 +3096,17 @@
     </div>
     <div class="metrics-grid">
       <div class="metric-card" data-count>
-        <div class="top">
-          <div class="num"><span class="count-animated" data-target="7" data-suffix="">7</span><span class="acc">.</span></div>
-          <div class="corner">/ дней<br>средний срок</div>
-        </div>
+        <div class="num"><span class="count-animated" data-target="7" data-suffix="">7</span><span class="acc">.</span></div>
         <div class="name">Срок сдачи</div>
         <div class="desc">От первого письма до запуска проекта в продакшен.</div>
       </div>
       <div class="metric-card" data-count>
-        <div class="top">
-          <div class="num"><span class="count-animated" data-target="142" data-suffix="">142</span><span class="acc">+</span></div>
-          <div class="corner">/ проектов<br>с 2021 года</div>
-        </div>
+        <div class="num"><span class="count-animated" data-target="142" data-suffix="">142</span><span class="acc">+</span></div>
         <div class="name">Сайтов сдано</div>
         <div class="desc">От лендингов до магазинов — все запущены и работают.</div>
       </div>
       <div class="metric-card" data-count>
-        <div class="top">
-          <div class="num"><span class="count-animated" data-target="100" data-suffix="">100</span><span class="acc">%</span></div>
-          <div class="corner">/ срок<br>гарантирован</div>
-        </div>
+        <div class="num"><span class="count-animated" data-target="100" data-suffix="">100</span><span class="acc">%</span></div>
         <div class="name">В срок</div>
         <div class="desc">Не уложились — вернём 20% стоимости. Просто.</div>
       </div>
