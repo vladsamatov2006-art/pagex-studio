@@ -387,6 +387,8 @@
     gap:12px;
     position:relative;
     transition:border-color 0.3s ease;
+    min-width:0;
+    overflow:hidden;
   }
   .hero-flow-step.done{border-color:rgba(211,47,47,0.4)}
   .hero-flow-step .top-row{
@@ -427,6 +429,9 @@
     font-size:11px;
     color:var(--muted);
     font-family:'JetBrains Mono',monospace;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
   }
   .hero-flow-step .bar{
     height:3px;
@@ -2084,6 +2089,20 @@
     --line-strong:rgba(26,26,26,0.16);
   }
 
+  /* Light mode element overrides for hardcoded dark values */
+  :root.light-mode .hero h1 .h1-ghost{
+    -webkit-text-stroke:1.5px rgba(26,26,26,0.25);
+  }
+  :root.light-mode .metric-card:hover{background:rgba(26,26,26,0.03)}
+  :root.light-mode .rotate-steps li .name{color:rgba(26,26,26,0.3)}
+  :root.light-mode .chrome{background:var(--bg-3)}
+  :root.light-mode .visual-code .ch{background:var(--bg-3)}
+  :root.light-mode .fs-nav-links span{background:rgba(26,26,26,0.12)}
+  :root.light-mode .fs-hero .line{background:rgba(26,26,26,0.15)}
+  :root.light-mode .fs-hero .line.thin{background:rgba(26,26,26,0.07)}
+  :root.light-mode .fs-card{background:var(--bg-2)}
+  :root.light-mode .fs-card .bar{background:rgba(26,26,26,0.15)}
+
   /* ============ FOOTER ============ */
   .footer{
     background:var(--bg);
@@ -2862,7 +2881,7 @@
       <div class="hero-flow-steps">
         <div class="hero-flow-step done">
           <div class="top-row"><div class="step-num">/ 01</div><div class="check"></div></div>
-          <div class="name">ТЗ принято</div>
+          <div class="name">Принято</div>
           <div class="meta">14:22</div>
           <div class="bar"><i></i></div>
         </div>
@@ -3479,19 +3498,53 @@
   const themeToggle = document.getElementById('themeToggle');
   const htmlElement = document.documentElement;
   const savedTheme = localStorage.getItem('theme') || 'dark';
-  
+
   if(savedTheme === 'light') {
     htmlElement.classList.add('light-mode');
     themeToggle.classList.add('light');
     themeToggle.innerHTML = '<span class="theme-toggle-circle"><span class="theme-toggle-icon">🌙</span></span>';
   }
-  
+
+  let themeAnimating = false;
   themeToggle.addEventListener('click', () => {
-    const isLight = htmlElement.classList.toggle('light-mode');
-    themeToggle.classList.toggle('light', isLight);
-    const icon = isLight ? '🌙' : '☀️';
-    themeToggle.innerHTML = `<span class="theme-toggle-circle"><span class="theme-toggle-icon">${icon}</span></span>`;
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    if(themeAnimating) return;
+    themeAnimating = true;
+
+    const newIsLight = !htmlElement.classList.contains('light-mode');
+    const overlay = document.getElementById('theme-overlay');
+    const rect = themeToggle.getBoundingClientRect();
+    const ox = ((rect.left + rect.width / 2) / window.innerWidth * 100).toFixed(2);
+    const oy = ((rect.top + rect.height / 2) / window.innerHeight * 100).toFixed(2);
+    const origin = `${ox}% ${oy}%`;
+    const newBg = newIsLight ? '#FFFFFF' : '#050505';
+
+    // Prime the overlay at the button, invisible
+    overlay.style.transition = 'none';
+    overlay.style.background = newBg;
+    overlay.style.clipPath = `circle(0% at ${origin})`;
+    overlay.offsetHeight; // force reflow
+
+    // Expand circle over 520ms
+    overlay.style.transition = 'clip-path 0.52s cubic-bezier(0.16,1,0.3,1)';
+    overlay.style.clipPath = `circle(150vmax at ${origin})`;
+
+    // At 480ms the screen is covered — switch theme
+    setTimeout(() => {
+      htmlElement.classList.toggle('light-mode', newIsLight);
+      themeToggle.classList.toggle('light', newIsLight);
+      const icon = newIsLight ? '🌙' : '☀️';
+      themeToggle.innerHTML = `<span class="theme-toggle-circle"><span class="theme-toggle-icon">${icon}</span></span>`;
+      localStorage.setItem('theme', newIsLight ? 'light' : 'dark');
+    }, 480);
+
+    // Start shrinking at 530ms — reveals the new theme
+    setTimeout(() => {
+      overlay.style.transition = 'clip-path 0.45s cubic-bezier(0.7,0,1,1)';
+      overlay.style.clipPath = `circle(0% at ${origin})`;
+    }, 530);
+
+    // Done
+    setTimeout(() => { themeAnimating = false; }, 980);
   });
 
   // ========= SMOOTH TEXT REVEAL =========
@@ -3950,6 +4003,9 @@
     <button class="btn-later" id="laterDiscount">Позже</button>
   </div>
 </div>
+
+<!-- Theme transition overlay -->
+<div id="theme-overlay" style="position:fixed;inset:0;z-index:99999;pointer-events:none;will-change:clip-path;"></div>
 
 </body>
 </html>
