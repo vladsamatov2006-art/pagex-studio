@@ -34,7 +34,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#050505;
@@ -246,12 +246,11 @@
     color:var(--white);
     margin-bottom:36px;
     border-radius:8px;
-    animation:heroIntroWow 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    animation:heroIntroWow 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
   }
   @keyframes heroIntroWow{
-    0%{opacity:0;transform:translateY(-20px) scale(0.95)}
-    50%{opacity:1;transform:translateY(0) scale(1)}
-    100%{opacity:0;transform:translateY(20px) scale(0.95)}
+    0%{opacity:0;transform:translateY(-14px)}
+    100%{opacity:1;transform:translateY(0)}
   }
   .hero .intro .pill-dot{
     width:6px;height:6px;
@@ -261,16 +260,17 @@
   }
   .hero .intro span{color:var(--muted-2)}
   .hero h1{
-    font-size:clamp(48px,7.5vw,108px);
-    font-weight:900;
-    letter-spacing:-0.04em;
-    line-height:0.94;
-    max-width:1100px;
+    font-family:'Bebas Neue','Inter',sans-serif;
+    font-size:clamp(72px,10vw,148px);
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:0.92;
+    max-width:1200px;
     margin:0 auto 32px;
   }
   .hero h1 .red{color:var(--red)}
   .hero h1 .stroke{
-    -webkit-text-stroke:1.5px var(--white);
+    -webkit-text-stroke:2px var(--white);
     color:transparent;
   }
   .hero p.sub{
@@ -1967,7 +1967,7 @@
     border-radius:6px;
     font-weight:700;
     cursor:pointer;
-    transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition:background 0.2s ease,transform 0.15s ease,box-shadow 0.2s ease;
     font-size:13px;
     text-transform:uppercase;
     letter-spacing:0.08em;
@@ -1976,10 +1976,10 @@
     background:var(--red-dim);
     border-color:var(--red-dim);
     transform:translateY(-2px);
-    box-shadow:0 10px 25px rgba(211,47,47,0.3);
+    box-shadow:0 8px 20px rgba(211,47,47,0.25);
   }
   .form-actions button:active{
-    transform:translateY(0);
+    transform:scale(0.97) translateY(0);
   }
   .form-status{
     font-size:12px;
@@ -2002,8 +2002,8 @@
     display:block;
   }
   @keyframes statusPop{
-    0%{opacity:0;transform:scale(0.9)}
-    100%{opacity:1;transform:scale(1)}
+    0%{opacity:0;transform:translateY(6px)}
+    100%{opacity:1;transform:translateY(0)}
   }
 
   /* ============ DARK/LIGHT MODE TOGGLE ============ */
@@ -2031,7 +2031,7 @@
     border-radius:50%;
     position:absolute;
     left:2px;
-    transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -2114,10 +2114,16 @@
   /* ============ REVEAL ============ */
   .reveal{
     opacity:0;
-    transform:translateY(24px);
-    transition:opacity 0.7s ease,transform 0.7s ease;
+    transform:translateY(32px);
+    transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1);
   }
   .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal[data-delay="1"]{transition-delay:0.08s}
+  .reveal[data-delay="2"]{transition-delay:0.16s}
+  .reveal[data-delay="3"]{transition-delay:0.24s}
+  .reveal[data-delay="4"]{transition-delay:0.32s}
+  .reveal[data-delay="5"]{transition-delay:0.40s}
+  .reveal[data-delay="6"]{transition-delay:0.48s}
 
   /* ============ FLOATING DISCOUNT ============ */
   .discount-badge{
@@ -2131,95 +2137,7 @@
     border-radius:12px;
     padding:20px;
     z-index:99;
-    transition:right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow:0 20px 60px rgba(211,47,47,0.3);
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-  }
-  .discount-badge.show{right:24px}
-  .discount-badge .close{
-    position:absolute;
-    top:10px;
-    right:10px;
-    width:24px;
-    height:24px;
-    background:none;
-    border:none;
-    color:rgba(255,255,255,0.9);
-    cursor:pointer;
-    font-size:20px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:color 0.2s;
-  }
-  .discount-badge .close:hover{color:#fff}
-  .discount-badge .tag{
-    font-size:10px;
-    font-family:'JetBrains Mono',monospace;
-    color:rgba(255,255,255,0.8);
-    text-transform:uppercase;
-    letter-spacing:0.15em;
-  }
-  .discount-badge .title{
-    font-size:18px;
-    font-weight:900;
-    color:#fff;
-    line-height:1.1;
-  }
-  .discount-badge .desc{
-    font-size:12px;
-    color:rgba(255,255,255,0.85);
-    line-height:1.4;
-  }
-  .discount-badge .action{
-    display:flex;
-    gap:8px;
-  }
-  .discount-badge button{
-    flex:1;
-    padding:10px 12px;
-    font-size:11px;
-    font-weight:700;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    transition:all 0.2s;
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    font-family:inherit;
-  }
-  .discount-badge .btn-claim{
-    background:#fff;
-    color:#D32F2F;
-  }
-  .discount-badge .btn-claim:hover{
-    transform:scale(1.05);
-    box-shadow:0 8px 20px rgba(255,255,255,0.3);
-  }
-  .discount-badge .btn-later{
-    background:rgba(255,255,255,0.15);
-    color:#fff;
-    border:1px solid rgba(255,255,255,0.3);
-  }
-  .discount-badge .btn-later:hover{
-    background:rgba(255,255,255,0.25);
-  }
-
-  /* ============ FLOATING DISCOUNT ============ */
-  .discount-badge{
-    position:fixed;
-    right:-280px;
-    bottom:120px;
-    width:260px;
-    background:linear-gradient(135deg, rgba(211,47,47,0.95) 0%, rgba(211,47,47,0.85) 100%);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,0.2);
-    border-radius:12px;
-    padding:20px;
-    z-index:99;
-    transition:right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition:right 0.5s cubic-bezier(0.16,1,0.3,1);
     box-shadow:0 20px 60px rgba(211,47,47,0.3);
     display:flex;
     flex-direction:column;
@@ -2318,8 +2236,8 @@
     max-width:500px;
     width:90%;
     position:relative;
-    transform:scale(0.9) translateY(20px);
-    transition:transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform:scale(0.94) translateY(20px);
+    transition:transform 0.45s cubic-bezier(0.16,1,0.3,1);
   }
   .modal-overlay.active .modal-content{transform:scale(1) translateY(0)}
   .modal-close{
@@ -2424,8 +2342,8 @@
     overflow-y:auto;
     border-radius:12px;
     position:relative;
-    transform:scale(0.95) translateY(30px);
-    transition:transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform:scale(0.94) translateY(30px);
+    transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
   }
   .blog-expand.active .blog-expand-content{transform:scale(1) translateY(0)}
   .blog-expand-close{
@@ -2499,6 +2417,142 @@
   }
   .audit-card .approve .pri:active{
     transform:translateY(0);
+  }
+
+  /* ============ MARQUEE STRIP ============ */
+  .marquee-strip{
+    background:var(--red);
+    overflow:hidden;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    z-index:1;
+  }
+  .marquee-track{
+    display:flex;
+    gap:0;
+    width:max-content;
+    animation:marqueeScroll 28s linear infinite;
+  }
+  .marquee-strip:hover .marquee-track{animation-play-state:paused}
+  @keyframes marqueeScroll{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(-50%)}
+  }
+  .marquee-item{
+    display:inline-flex;
+    align-items:center;
+    gap:32px;
+    padding:0 40px;
+    font-size:12px;
+    font-weight:700;
+    font-family:'JetBrains Mono',monospace;
+    color:#fff;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .marquee-sep{
+    display:inline-block;
+    width:4px;height:4px;
+    background:rgba(255,255,255,0.5);
+    border-radius:50%;
+    flex-shrink:0;
+  }
+
+  /* ============ CURSOR TRAIL ============ */
+  #cursor-canvas{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    pointer-events:none;
+    z-index:9999;
+  }
+
+  /* ============ HEADER COMPRESS ============ */
+  .site-header{
+    transition:background 0.3s ease,border-color 0.3s ease,padding 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .site-header.compressed .header-grid{
+    height:52px;
+    transition:height 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .site-header .header-grid{
+    transition:height 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  /* ============ METRIC CARD HOVER LIFT ============ */
+  .metric-card{
+    transition:background 0.25s ease,transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.35s ease;
+  }
+  .metric-card:hover{
+    background:var(--bg-3);
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  /* ============ FEATURE CARD HOVER LIFT ============ */
+  .feature-card{
+    transition:background 0.25s ease,transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.35s ease;
+  }
+  .feature-card:hover{
+    background:var(--bg-3);
+    transform:translateY(-3px);
+    box-shadow:0 16px 32px rgba(0,0,0,0.35);
+    z-index:2;
+  }
+
+  /* ============ NUMBER COUNTER ============ */
+  .metric-card .num{
+    transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  .metric-card:hover .num{
+    transform:scale(1.04);
+  }
+  .count-animated{
+    display:inline;
+  }
+
+  /* ============ SERVICES TAB PANEL FADE ============ */
+  /* Анимация управляется через JS inline styles */
+
+  /* ============ SOCIAL PROOF COUNTER ============ */
+  .form-social-proof{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:12px;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    margin-top:8px;
+    justify-content:center;
+  }
+  .form-social-proof .dots{
+    display:flex;
+    gap:-4px;
+  }
+  .form-social-proof .dot-ava{
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--bg-3);
+    border:1.5px solid var(--bg-2);
+    margin-left:-6px;
+    font-size:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    color:var(--muted-2);
+  }
+  .form-social-proof .dot-ava:first-child{margin-left:0}
+  .form-social-proof .dot-ava.red{background:var(--red);color:#fff}
+  .form-social-proof span{letter-spacing:0.06em}
+
+  /* ============ HERO MOUSE PARALLAX ============ */
+  .hero-parallax-container{
+    position:relative;
+    will-change:transform;
+    transition:transform 0.1s linear;
   }
 
   /* ============ RESPONSIVE ============ */
@@ -2783,6 +2837,32 @@
   </div>
 </section>
 
+<!-- ============ MARQUEE STRIP ============ -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Лендинги<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Корп. сайты<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Магазины<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Веб-приложения<span class="marquee-sep"></span></span>
+    <span class="marquee-item">от 10 000 ₽<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Срок 7 дней<span class="marquee-sep"></span></span>
+    <span class="marquee-item">100% в срок<span class="marquee-sep"></span></span>
+    <span class="marquee-item">React · Next.js · Tailwind<span class="marquee-sep"></span></span>
+    <span class="marquee-item">142 проекта<span class="marquee-sep"></span></span>
+    <span class="marquee-item">No-code free zone<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Лендинги<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Корп. сайты<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Магазины<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Веб-приложения<span class="marquee-sep"></span></span>
+    <span class="marquee-item">от 10 000 ₽<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Срок 7 дней<span class="marquee-sep"></span></span>
+    <span class="marquee-item">100% в срок<span class="marquee-sep"></span></span>
+    <span class="marquee-item">React · Next.js · Tailwind<span class="marquee-sep"></span></span>
+    <span class="marquee-item">142 проекта<span class="marquee-sep"></span></span>
+    <span class="marquee-item">No-code free zone<span class="marquee-sep"></span></span>
+  </div>
+</div>
+
 <!-- ============ STACK ============ -->
 <section class="stack" id="stack">
   <div class="shell">
@@ -2961,25 +3041,25 @@
       <h2>Не обещаем. <span class="red">Делаем.</span></h2>
     </div>
     <div class="metrics-grid">
-      <div class="metric-card">
+      <div class="metric-card" data-count>
         <div class="top">
-          <div class="num">7<span class="acc">.</span></div>
+          <div class="num"><span class="count-animated" data-target="7" data-suffix="">7</span><span class="acc">.</span></div>
           <div class="corner">/ дней<br>средний срок</div>
         </div>
         <div class="name">Срок сдачи</div>
         <div class="desc">От первого письма до запуска проекта в продакшен.</div>
       </div>
-      <div class="metric-card">
+      <div class="metric-card" data-count>
         <div class="top">
-          <div class="num">142<span class="acc">+</span></div>
+          <div class="num"><span class="count-animated" data-target="142" data-suffix="">142</span><span class="acc">+</span></div>
           <div class="corner">/ проектов<br>с 2021 года</div>
         </div>
         <div class="name">Сайтов сдано</div>
         <div class="desc">От лендингов до магазинов — все запущены и работают.</div>
       </div>
-      <div class="metric-card">
+      <div class="metric-card" data-count>
         <div class="top">
-          <div class="num">100<span class="acc">%</span></div>
+          <div class="num"><span class="count-animated" data-target="100" data-suffix="">100</span><span class="acc">%</span></div>
           <div class="corner">/ срок<br>гарантирован</div>
         </div>
         <div class="name">В срок</div>
@@ -3208,37 +3288,37 @@
       </div>
     </div>
     <div class="features-grid">
-      <div class="feature-card">
+      <div class="feature-card reveal" data-delay="1">
         <span class="num">/ 01</span>
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M2 20h20"/></svg></div>
         <h3>Адаптив под все экраны</h3>
         <p>От 320 пикселей до 4K. Тестируем на реальных устройствах, а не только в DevTools.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal" data-delay="2">
         <span class="num">/ 02</span>
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
         <h3>SEO-готовность</h3>
         <p>Семантическая разметка, OG-теги, sitemap.xml, robots.txt и микроразметка из коробки.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal" data-delay="3">
         <span class="num">/ 03</span>
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <h3>Скорость &lt; 2 секунд</h3>
         <p>Lighthouse 95+, оптимизированные изображения, ленивая загрузка, минификация всего.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal" data-delay="4">
         <span class="num">/ 04</span>
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9.7 8 11 4.5-1.3 8-6 8-11V6l-8-4z"/></svg></div>
         <h3>Безопасность по умолчанию</h3>
         <p>HTTPS, защита форм от спама, CSP-заголовки. Защита от XSS и CSRF на уровне фреймворка.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal" data-delay="5">
         <span class="num">/ 05</span>
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg></div>
         <h3>Аналитика подключена</h3>
         <p>Yandex Metrika, GA4, цели и события настроены до запуска. Данные идут с первого визита.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal" data-delay="6">
         <span class="num">/ 06</span>
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M12 8v4l3 2"/></svg></div>
         <h3>Поддержка 30 дней</h3>
@@ -3294,6 +3374,14 @@
       <div class="form-actions">
         <button type="submit" id="submitBtn">Отправить</button>
         <button type="reset" style="background:var(--bg-2);color:var(--white);border-color:var(--line-strong)">Очистить</button>
+      </div>
+      <div class="form-social-proof">
+        <div class="dots">
+          <div class="dot-ava red">М</div>
+          <div class="dot-ava">А</div>
+          <div class="dot-ava">К</div>
+        </div>
+        <span>Уже <strong style="color:var(--white)">47 заявок</strong> этим месяцем</span>
       </div>
       <div class="form-status" id="formStatus"></div>
     </form>
@@ -3441,7 +3529,6 @@
   const onScrollParallax = () => {
     parallaxLayers.forEach(layer => {
       const rect = layer.parentElement.getBoundingClientRect();
-      const yOffset = window.scrollY * 0.5;
       const elementOffset = window.scrollY + rect.top;
       const parallaxOffset = (elementOffset - window.scrollY) * 0.3;
       layer.style.transform = `translateY(${parallaxOffset}px)`;
@@ -3450,23 +3537,55 @@
   window.addEventListener('scroll', onScrollParallax, { passive:true });
   onScrollParallax();
 
-  // ========= HEADER SCROLL =========
+  // ========= HEADER SCROLL + COMPRESS =========
   const header = document.getElementById('header');
+  let lastScrollY = window.scrollY;
   const onScrollHeader = () => {
-    if(window.scrollY > 20) header.classList.add('scrolled');
+    const current = window.scrollY;
+    if(current > 20) header.classList.add('scrolled');
     else header.classList.remove('scrolled');
+    if(current > lastScrollY && current > 80) header.classList.add('compressed');
+    else header.classList.remove('compressed');
+    lastScrollY = current;
   };
   window.addEventListener('scroll', onScrollHeader, { passive:true });
   onScrollHeader();
 
-  // ========= SERVICES TABS =========
+  // ========= SERVICES TABS WITH CROSSFADE =========
   const tabs = document.querySelectorAll('.services-tab');
   const panels = document.querySelectorAll('.services-panel');
+  const EASE = 'cubic-bezier(0.16,1,0.3,1)';
   tabs.forEach(t=>{
     t.addEventListener('click', ()=>{
       const idx = t.getAttribute('data-panel');
       tabs.forEach(x=>x.classList.toggle('active', x===t));
-      panels.forEach(p=>p.classList.toggle('active', p.getAttribute('data-panel')===idx));
+      const current = document.querySelector('.services-panel.active');
+      const next = document.querySelector(`.services-panel[data-panel="${idx}"]`);
+      if(!next || next === current) return;
+      // Fade out current
+      if(current){
+        current.style.transition = `opacity 0.18s ease, transform 0.18s ease`;
+        current.style.opacity = '0';
+        current.style.transform = 'translateY(-6px)';
+        setTimeout(()=>{
+          current.classList.remove('active');
+          current.style.cssText = '';
+          // Fade in next
+          next.classList.add('active');
+          next.style.opacity = '0';
+          next.style.transform = 'translateY(10px)';
+          requestAnimationFrame(()=>{
+            requestAnimationFrame(()=>{
+              next.style.transition = `opacity 0.35s ${EASE}, transform 0.35s ${EASE}`;
+              next.style.opacity = '1';
+              next.style.transform = 'translateY(0)';
+              setTimeout(()=>{ next.style.cssText = ''; }, 400);
+            });
+          });
+        }, 180);
+      } else {
+        panels.forEach(p=>p.classList.toggle('active', p.getAttribute('data-panel')===idx));
+      }
     });
   });
 
@@ -3522,40 +3641,120 @@
   }, { threshold:0.12 });
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // ========= FLOATING DISCOUNT BADGE =========
+  // ========= FLOATING DISCOUNT BADGE (показываем только 1 раз за сессию) =========
   const discountBadge = document.getElementById('discountBadge');
   const closeDiscount = document.getElementById('closeDiscount');
   const claimDiscount = document.getElementById('claimDiscount');
-  
+
   if(discountBadge && closeDiscount && claimDiscount){
-    let discountInterval;
-    
-    const showDiscount = () => {
-      discountBadge.classList.add('show');
-      setTimeout(() => {
-        discountBadge.classList.remove('show');
-      }, 8000);
+    const BADGE_KEY = 'pagex_badge_dismissed';
+    const dismissed = sessionStorage.getItem(BADGE_KEY);
+
+    const hideDiscount = () => {
+      discountBadge.classList.remove('show');
+      sessionStorage.setItem(BADGE_KEY, '1');
     };
-    
-    // Первый показ через 3 сек
-    setTimeout(showDiscount, 3000);
-    
-    // Каждую минуту показываем
-    discountInterval = setInterval(showDiscount, 60000);
-    
-    closeDiscount.addEventListener('click', (e) => {
-      e.preventDefault();
-      discountBadge.classList.remove('show');
-    });
-    
-    document.getElementById('laterDiscount').addEventListener('click', () => {
-      discountBadge.classList.remove('show');
-    });
-    
+
+    if(!dismissed){
+      setTimeout(() => {
+        discountBadge.classList.add('show');
+        setTimeout(() => discountBadge.classList.remove('show'), 10000);
+      }, 4000);
+    }
+
+    closeDiscount.addEventListener('click', (e) => { e.preventDefault(); hideDiscount(); });
+    const laterBtn = document.getElementById('laterDiscount');
+    if(laterBtn) laterBtn.addEventListener('click', hideDiscount);
     claimDiscount.addEventListener('click', () => {
-      document.querySelector('.cta')?.scrollIntoView({ behavior: 'smooth' });
-      discountBadge.classList.remove('show');
+      document.querySelector('.cta')?.scrollIntoView({ behavior:'smooth' });
+      hideDiscount();
     });
+  }
+
+  // ========= CURSOR TRAIL =========
+  (function(){
+    const canvas = document.getElementById('cursor-canvas');
+    if(!canvas || window.matchMedia('(pointer:coarse)').matches) return;
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
+    window.addEventListener('resize', ()=>{ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
+    const pts = [];
+    const MAX = 18;
+    let mx = -999, my = -999;
+    window.addEventListener('mousemove', e=>{ mx = e.clientX; my = e.clientY; }, { passive:true });
+    function tick(){
+      ctx.clearRect(0,0,W,H);
+      pts.push({ x:mx, y:my });
+      if(pts.length > MAX) pts.shift();
+      for(let i=1; i<pts.length; i++){
+        const p0 = pts[i-1], p1 = pts[i];
+        const alpha = (i/pts.length) * 0.18;
+        const size = (i/pts.length) * 5;
+        ctx.beginPath();
+        ctx.arc(p1.x, p1.y, size, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(211,47,47,${alpha})`;
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.lineTo(p1.x, p1.y);
+        ctx.strokeStyle = `rgba(211,47,47,${alpha * 0.6})`;
+        ctx.lineWidth = size * 0.8;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+
+  // ========= NUMBER COUNTER =========
+  function animateCount(el, target, suffix, duration){
+    const start = performance.now();
+    const from = 0;
+    function step(now){
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      const val = Math.round(from + (target - from) * eased);
+      el.textContent = val + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const counterObs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const card = e.target;
+      const numEl = card.querySelector('.count-animated');
+      if(!numEl) return;
+      const target = parseInt(numEl.dataset.target, 10);
+      const suffix = numEl.dataset.suffix || '';
+      animateCount(numEl, target, suffix, 1400);
+      counterObs.unobserve(card);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.metric-card[data-count]').forEach(c=>counterObs.observe(c));
+
+  // ========= HERO MOUSE PARALLAX =========
+  const heroSection = document.getElementById('hero');
+  if(heroSection){
+    let hx = 0, hy = 0, thx = 0, thy = 0;
+    const heroGlow = heroSection.querySelector('.hero-glow');
+    window.addEventListener('mousemove', e=>{
+      const rect = heroSection.getBoundingClientRect();
+      if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+      thx = (e.clientX / window.innerWidth - 0.5) * 30;
+      thy = (e.clientY / window.innerHeight - 0.5) * 20;
+    }, { passive:true });
+    function heroParallax(){
+      hx += (thx - hx) * 0.06;
+      hy += (thy - hy) * 0.06;
+      if(heroGlow) heroGlow.style.transform = `translateX(calc(-50% + ${hx}px)) translateY(${hy}px)`;
+      requestAnimationFrame(heroParallax);
+    }
+    heroParallax();
   }
 
   // ========= STACK MODAL =========
@@ -3677,6 +3876,9 @@
     });
   }
 </script>
+
+<!-- ============ CURSOR TRAIL ============ -->
+<canvas id="cursor-canvas"></canvas>
 
 <!-- ============ MODALS ============ -->
 <div class="modal-overlay" id="stackModal">
